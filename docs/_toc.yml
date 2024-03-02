@@ -16,5 +16,5 @@ parts:
     - file: 00_course_preparation/15_Dependencies
     - file: 00_course_preparation/18_Get_data
     - file: 00_course_preparation/20_Test_deconvolution_libs
-    - file: 00_course_preparation/30_Test_deep_learning_libs
+    - file: 00_course_preparation/30_Test_deep_learning_libs 
   
