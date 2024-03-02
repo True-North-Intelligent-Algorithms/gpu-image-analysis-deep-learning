@@ -1,3 +1,9 @@
+docs/_build
+data
+models
+**/__pycache__/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
