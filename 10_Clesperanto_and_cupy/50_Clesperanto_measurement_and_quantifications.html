@@ -1,0 +1,880 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Object measurements and quantifications &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_Clesperanto_and_cupy/50_Clesperanto_measurement_and_quantifications';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">GPU image analysis and Deep Learning using the Image.sc ecosystem</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_course_preparation/05_Module1.html">Course preparation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/10_Mambaforge_devbio.html">Mambaforge and devbio-napari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/15_Dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/18_Get_data.html">Get test data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/20_Test_deconvolution_libs.html">Test deconvolution imports</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/30_Test_deep_learning_libs.html">Test deep learning libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="05_Clesperanto_cupy_intro.html">Clesperanto and Cupy</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="10_Clesperanto_select_devices.html">List and select devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="30_Clesperanto_apply_operations_on_data.html">Apply operations on data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="60_Cupy_basics.html">Basics of Cupy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="65_Cupy_dropin_replacement.html">Cupy as drop-in replacement for numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="70_Benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="80_Cupy_filtering.html">Image filtering using cupy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../20_Convolution_deconvolution/0_Intro_to_decon.html">Intro to Deconvolution and Restoration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/2_Cupy_forward.html">Implementing the forward model (Convolution) with cupy</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/4_Nuclei_Deconvolution_Segmentation.html">Nuclei Deconvolution and Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/10_Decon_systems_design.html">Deconvolution Systems Design</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../30_ML_pixel_classification/0_Intro_to_ml_pixel_classification.html">ML Pixel Classification</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../30_ML_pixel_classification/10_Napari_interactive_pixel_classification.html">DIY Interactive Segmentation with napari</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../40_Deep_learning/0_Intro_to_deep_learning.html">Intro to deep learning</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/5_Pytorch_setup.html">Pytorch tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/10_Explore_data.html">Explore data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/20_Make_labels.html">Label data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/30_Make_augment_patches.html">Make Augmented Patches</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/35_Pytorch_semantic_segmentation.html">Train a semantic segmentation unet using Pytorch</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/40_Stardist_instance_segmentation.html">Check what devices we have access to….</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning/issues/new?title=Issue%20on%20page%20%2F10_Clesperanto_and_cupy/50_Clesperanto_measurement_and_quantifications.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/10_Clesperanto_and_cupy/50_Clesperanto_measurement_and_quantifications.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Object measurements and quantifications</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-measurements">More measurements</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="object-measurements-and-quantifications">
+<h1>Object measurements and quantifications<a class="headerlink" href="#object-measurements-and-quantifications" title="Permalink to this heading">#</a></h1>
+<p>Processing operations are usually part of an analysis pipeline where the end goal if often to measure and extract quantifications from the data. In this section, we will see how to extract measurements from segmented objects.</p>
+<p>Let’s first re-apply some processing and get an image segmented, ready to be quantified.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imshow</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">cle</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="s1">&#39;TX&#39;</span><span class="p">)</span>  <span class="c1"># TODO: change to your GPU</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NVIDIA GeForce RTX 3090 on Platform: NVIDIA CUDA (1 refs)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#image = imread(&quot;../../data/IXMtest_A02_s9.tif&quot;)[:,:,0]</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/phantom.tif&quot;</span><span class="p">)</span>
+<span class="c1">#segmentation = cle.voronoi_otsu_labeling(image, spot_sigma=5, outline_sigma=1)</span>
+<span class="n">segmentation</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">cle</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">cle</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">segmentation</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3c18d5ef92789bb964975d3f367154904ab274ea1b0ae110e09d066ac049f951.png" src="../_images/3c18d5ef92789bb964975d3f367154904ab274ea1b0ae110e09d066ac049f951.png" />
+</div>
+</div>
+<p>We have now image with various nuclei that we can count and measure some properties from.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;there is&quot;</span><span class="p">,</span><span class="n">segmentation</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="s2">&quot;objects in the image&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>there is 17.0 objects in the image
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, it is not advised to keep object at the image border for further quantifications.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">exclude_labels_on_edges</span><span class="p">(</span><span class="n">segmentation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;there is&quot;</span><span class="p">,</span><span class="n">final</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="s2">&quot;objects in the image&quot;</span><span class="p">)</span>
+<span class="n">final</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>there is 17.0 objects in the image
+</pre></div>
+</div>
+<div class="output text_html"><table>
+<tr>
+<td>
+<img src="data:image/png;base64,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"></img>
+</td>
+<td style="text-align: center; vertical-align: top;">
+<b><a href="https://github.com/clEsperanto/pyclesperanto_prototype" target="_blank">cle._</a> image</b><br/>
+<table>
+<tr><td>shape</td><td>(512,&nbsp;512,&nbsp;512)</td></tr>
+<tr><td>dtype</td><td>uint32</td></tr>
+<tr><td>size</td><td>512.0 MB</td></tr>
+<tr><td>min</td><td>0.0</td></tr><tr><td>max</td><td>17.0</td></tr>
+</table>
+
+</td>
+</tr>
+</table></div></div>
+</div>
+<p>The number of objects is a nice thing to know, but clearly not sufficient to describe the content of an image and the objects in it. We therefore need to measure more properties.</p>
+<p>The first approach to do so is using the <code class="docutils literal notranslate"><span class="pre">statistics_of_labelled_pixels</span></code> function. This function will compute a series of features and return it as a dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">statistics_of_labelled_pixels</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">final</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;label&#39;, &#39;original_label&#39;, &#39;bbox_min_x&#39;, &#39;bbox_min_y&#39;, &#39;bbox_min_z&#39;, &#39;bbox_max_x&#39;, &#39;bbox_max_y&#39;, &#39;bbox_max_z&#39;, &#39;bbox_width&#39;, &#39;bbox_height&#39;, &#39;bbox_depth&#39;, &#39;min_intensity&#39;, &#39;max_intensity&#39;, &#39;sum_intensity&#39;, &#39;area&#39;, &#39;mean_intensity&#39;, &#39;sum_intensity_times_x&#39;, &#39;mass_center_x&#39;, &#39;sum_intensity_times_y&#39;, &#39;mass_center_y&#39;, &#39;sum_intensity_times_z&#39;, &#39;mass_center_z&#39;, &#39;sum_x&#39;, &#39;centroid_x&#39;, &#39;sum_y&#39;, &#39;centroid_y&#39;, &#39;sum_z&#39;, &#39;centroid_z&#39;, &#39;sum_distance_to_centroid&#39;, &#39;mean_distance_to_centroid&#39;, &#39;sum_distance_to_mass_center&#39;, &#39;mean_distance_to_mass_center&#39;, &#39;standard_deviation_intensity&#39;, &#39;max_distance_to_centroid&#39;, &#39;max_distance_to_mass_center&#39;, &#39;mean_max_distance_to_centroid_ratio&#39;, &#39;mean_max_distance_to_mass_center_ratio&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results can then be processed and analysed using the Python package <a class="reference external" href="https://pandas.pydata.org/">pandas</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>label</th>
+      <th>original_label</th>
+      <th>bbox_min_x</th>
+      <th>bbox_min_y</th>
+      <th>bbox_min_z</th>
+      <th>bbox_max_x</th>
+      <th>bbox_max_y</th>
+      <th>bbox_max_z</th>
+      <th>bbox_width</th>
+      <th>bbox_height</th>
+      <th>...</th>
+      <th>centroid_z</th>
+      <th>sum_distance_to_centroid</th>
+      <th>mean_distance_to_centroid</th>
+      <th>sum_distance_to_mass_center</th>
+      <th>mean_distance_to_mass_center</th>
+      <th>standard_deviation_intensity</th>
+      <th>max_distance_to_centroid</th>
+      <th>max_distance_to_mass_center</th>
+      <th>mean_max_distance_to_centroid_ratio</th>
+      <th>mean_max_distance_to_mass_center_ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>39.0</td>
+      <td>39.0</td>
+      <td>248.0</td>
+      <td>88.0</td>
+      <td>88.0</td>
+      <td>264.0</td>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>...</td>
+      <td>255.827133</td>
+      <td>337510.781250</td>
+      <td>15.386159</td>
+      <td>337510.781250</td>
+      <td>15.386159</td>
+      <td>0.0</td>
+      <td>24.990595</td>
+      <td>24.990601</td>
+      <td>1.624226</td>
+      <td>1.624226</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>39.0</td>
+      <td>423.0</td>
+      <td>248.0</td>
+      <td>88.0</td>
+      <td>472.0</td>
+      <td>264.0</td>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>...</td>
+      <td>255.827133</td>
+      <td>337510.781250</td>
+      <td>15.386159</td>
+      <td>337510.812500</td>
+      <td>15.386161</td>
+      <td>0.0</td>
+      <td>24.990595</td>
+      <td>24.990625</td>
+      <td>1.624226</td>
+      <td>1.624228</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>3</td>
+      <td>54.0</td>
+      <td>246.0</td>
+      <td>125.0</td>
+      <td>73.0</td>
+      <td>265.0</td>
+      <td>131.0</td>
+      <td>20.0</td>
+      <td>20.0</td>
+      <td>...</td>
+      <td>127.812500</td>
+      <td>8648.745117</td>
+      <td>6.142575</td>
+      <td>8648.745117</td>
+      <td>6.142575</td>
+      <td>0.0</td>
+      <td>9.926488</td>
+      <td>9.926488</td>
+      <td>1.616014</td>
+      <td>1.616014</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>4</td>
+      <td>54.0</td>
+      <td>246.0</td>
+      <td>253.0</td>
+      <td>73.0</td>
+      <td>265.0</td>
+      <td>259.0</td>
+      <td>20.0</td>
+      <td>20.0</td>
+      <td>...</td>
+      <td>255.812500</td>
+      <td>8648.745117</td>
+      <td>6.142575</td>
+      <td>8648.745117</td>
+      <td>6.142575</td>
+      <td>0.0</td>
+      <td>9.926488</td>
+      <td>9.926488</td>
+      <td>1.616014</td>
+      <td>1.616014</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>5</td>
+      <td>54.0</td>
+      <td>246.0</td>
+      <td>381.0</td>
+      <td>73.0</td>
+      <td>265.0</td>
+      <td>387.0</td>
+      <td>20.0</td>
+      <td>20.0</td>
+      <td>...</td>
+      <td>383.812500</td>
+      <td>8648.745117</td>
+      <td>6.142575</td>
+      <td>8648.745117</td>
+      <td>6.142575</td>
+      <td>0.0</td>
+      <td>9.926488</td>
+      <td>9.926488</td>
+      <td>1.616014</td>
+      <td>1.616014</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 37 columns</p>
+</div></div></div>
+</div>
+<section id="more-measurements">
+<h2>More measurements<a class="headerlink" href="#more-measurements" title="Permalink to this heading">#</a></h2>
+<p>Not all features are available. We are still missing some, especially shape descriptors. But it is important to say here that they do not all easy to to be computed by a GPU.</p>
+<p>For the time behing, we made the <code class="docutils literal notranslate"><span class="pre">regionprops</span></code> function, from the scikit-image, compatible with <code class="docutils literal notranslate"><span class="pre">pyclesperanto</span></code>. The usage and return values are the same as the original function. And the function still rely on CPU for the computation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">props</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">regionprops</span><span class="p">(</span><span class="n">final</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The properties list name can be found at the <a class="reference external" href="https://scikit-image.org/docs/dev/api/skimage.measure.html#skimage.measure.regionprops">scikit-image documentation</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">props_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;solidity&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">final</span><span class="o">.</span><span class="n">max</span><span class="p">())):</span>
+    <span class="nb">print</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">props</span><span class="p">[</span><span class="n">l</span><span class="p">],</span> <span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">props_list</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;label: 1&#39;, &#39;area: 21860.0&#39;, &#39;solidity: 0.9316399590862599&#39;]
+[&#39;label: 2&#39;, &#39;area: 176.0&#39;, &#39;solidity: 0.7333333333333333&#39;]
+[&#39;label: 3&#39;, &#39;area: 1336.0&#39;, &#39;solidity: 0.8789473684210526&#39;]
+[&#39;label: 4&#39;, &#39;area: 1884.0&#39;, &#39;solidity: 0.8903591682419659&#39;]
+[&#39;label: 5&#39;, &#39;area: 12476.0&#39;, &#39;solidity: 0.9072134962187318&#39;]
+[&#39;label: 6&#39;, &#39;area: 20428.0&#39;, &#39;solidity: 0.7919671241373963&#39;]
+[&#39;label: 7&#39;, &#39;area: 10346.0&#39;, &#39;solidity: 0.7733014425592346&#39;]
+[&#39;label: 8&#39;, &#39;area: 492660.0&#39;, &#39;solidity: 0.9315667361884539&#39;]
+[&#39;label: 9&#39;, &#39;area: 29083.0&#39;, &#39;solidity: 0.2629946466034869&#39;]
+[&#39;label: 10&#39;, &#39;area: 29269.0&#39;, &#39;solidity: 0.2589947792230776&#39;]
+[&#39;label: 11&#39;, &#39;area: 29572.0&#39;, &#39;solidity: 0.25971334223283915&#39;]
+[&#39;label: 12&#39;, &#39;area: 31201.0&#39;, &#39;solidity: 0.2502988247563275&#39;]
+[&#39;label: 13&#39;, &#39;area: 24181.0&#39;, &#39;solidity: 0.20057399281679508&#39;]
+[&#39;label: 14&#39;, &#39;area: 23375.0&#39;, &#39;solidity: 0.19243751440708665&#39;]
+[&#39;label: 15&#39;, &#39;area: 25838.0&#39;, &#39;solidity: 0.2025985431221723&#39;]
+[&#39;label: 16&#39;, &#39;area: 34891.0&#39;, &#39;solidity: 0.27157390038683965&#39;]
+[&#39;label: 17&#39;, &#39;area: 28252.0&#39;, &#39;solidity: 0.21265289225095027&#39;]
+[&#39;label: 18&#39;, &#39;area: 617160.0&#39;, &#39;solidity: 0.8955041963156001&#39;]
+[&#39;label: 19&#39;, &#39;area: 176.0&#39;, &#39;solidity: 0.7333333333333333&#39;]
+[&#39;label: 20&#39;, &#39;area: 1336.0&#39;, &#39;solidity: 0.8789473684210526&#39;]
+[&#39;label: 21&#39;, &#39;area: 1884.0&#39;, &#39;solidity: 0.8903591682419659&#39;]
+[&#39;label: 22&#39;, &#39;area: 176.0&#39;, &#39;solidity: 0.7333333333333333&#39;]
+[&#39;label: 23&#39;, &#39;area: 1336.0&#39;, &#39;solidity: 0.8789473684210526&#39;]
+[&#39;label: 24&#39;, &#39;area: 1884.0&#39;, &#39;solidity: 0.8903591682419659&#39;]
+[&#39;label: 25&#39;, &#39;area: 21860.0&#39;, &#39;solidity: 0.9316399590862599&#39;]
+[&#39;label: 26&#39;, &#39;area: 176.0&#39;, &#39;solidity: 0.7333333333333333&#39;]
+[&#39;label: 27&#39;, &#39;area: 1336.0&#39;, &#39;solidity: 0.8789473684210526&#39;]
+[&#39;label: 28&#39;, &#39;area: 1884.0&#39;, &#39;solidity: 0.8903591682419659&#39;]
+[&#39;label: 29&#39;, &#39;area: 25292.0&#39;, &#39;solidity: 0.9354934161858263&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./10_Clesperanto_and_cupy"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-measurements">More measurements</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Copyright: This work can be reused under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a> license unless mentioned otherwise.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

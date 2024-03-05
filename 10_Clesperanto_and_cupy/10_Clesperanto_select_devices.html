@@ -1,0 +1,1158 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>List and select devices &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10_Clesperanto_and_cupy/10_Clesperanto_select_devices';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Apply operations on data" href="30_Clesperanto_apply_operations_on_data.html" />
+    <link rel="prev" title="Clesperanto and Cupy" href="05_Clesperanto_cupy_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">GPU image analysis and Deep Learning using the Image.sc ecosystem</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_course_preparation/05_Module1.html">Course preparation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/10_Mambaforge_devbio.html">Mambaforge and devbio-napari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/15_Dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/18_Get_data.html">Get test data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/20_Test_deconvolution_libs.html">Test deconvolution imports</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/30_Test_deep_learning_libs.html">Test deep learning libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="05_Clesperanto_cupy_intro.html">Clesperanto and Cupy</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">List and select devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="30_Clesperanto_apply_operations_on_data.html">Apply operations on data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="60_Cupy_basics.html">Basics of Cupy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="65_Cupy_dropin_replacement.html">Cupy as drop-in replacement for numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="70_Benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="80_Cupy_filtering.html">Image filtering using cupy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../20_Convolution_deconvolution/0_Intro_to_decon.html">Intro to Deconvolution and Restoration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/2_Cupy_forward.html">Implementing the forward model (Convolution) with cupy</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/4_Nuclei_Deconvolution_Segmentation.html">Nuclei Deconvolution and Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/10_Decon_systems_design.html">Deconvolution Systems Design</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../30_ML_pixel_classification/0_Intro_to_ml_pixel_classification.html">ML Pixel Classification</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../30_ML_pixel_classification/10_Napari_interactive_pixel_classification.html">DIY Interactive Segmentation with napari</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../40_Deep_learning/0_Intro_to_deep_learning.html">Intro to deep learning</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/5_Pytorch_setup.html">Pytorch tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/10_Explore_data.html">Explore data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/20_Make_labels.html">Label data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/30_Make_augment_patches.html">Make Augmented Patches</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/35_Pytorch_semantic_segmentation.html">Train a semantic segmentation unet using Pytorch</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/40_Stardist_instance_segmentation.html">Check what devices we have access to….</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning/issues/new?title=Issue%20on%20page%20%2F10_Clesperanto_and_cupy/10_Clesperanto_select_devices.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/10_Clesperanto_and_cupy/10_Clesperanto_select_devices.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>List and select devices</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1-list-devices-and-select-a-device">Exercice 1: List devices and select a device</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2-which-device-to-choose">Exercice 2: Which device to choose?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="list-and-select-devices">
+<h1>List and select devices<a class="headerlink" href="#list-and-select-devices" title="Permalink to this heading">#</a></h1>
+<p>pyclesperanto relies on sending computing instructions to compute devices. Here, devices are Computational Units (CUs) compatible with <code class="docutils literal notranslate"><span class="pre">OpenCL</span></code>. This can be GPUs and CPUs although we would prefer to use GPUs for their speed capacities.</p>
+<p>Before starting to use pyclesperanto, it is important to know which devices are available on your system and which one you want to use based on their performances.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
+<span class="kn">import</span> <span class="nn">pyopencl</span> <span class="k">as</span> <span class="nn">cl</span>
+
+<span class="kn">import</span> <span class="nn">cupy</span> <span class="k">as</span> <span class="nn">cp</span>
+
+<span class="n">num_devices</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">getDeviceCount</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_devices</span><span class="p">):</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">getDeviceProperties</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device </span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device 0: b&#39;NVIDIA GeForce RTX 3090&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercice-1-list-devices-and-select-a-device">
+<h2>Exercice 1: List devices and select a device<a class="headerlink" href="#exercice-1-list-devices-and-select-a-device" title="Permalink to this heading">#</a></h2>
+<p>Using the method <code class="docutils literal notranslate"><span class="pre">available_device_names()</span></code> and <code class="docutils literal notranslate"><span class="pre">select_device()</span></code> from the <code class="docutils literal notranslate"><span class="pre">pyclesperanto_prototype</span></code> package, list the available devices on your machine and select one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cle</span><span class="o">.</span><span class="n">available_device_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Intel(R) Core(TM) i9-10940X CPU @ 3.30GHz&#39;,
+ &#39;Intel(R) FPGA Emulation Device&#39;,
+ &#39;NVIDIA GeForce RTX 3090&#39;,
+ &#39;cupy backend (experimental)&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cle</span><span class="o">.</span><span class="n">select_device</span><span class="p">(</span><span class="s1">&#39;NVIDIA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;NVIDIA GeForce RTX 3090 on Platform: NVIDIA CUDA (1 refs)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Tips:</strong> Devices are defined by a <code class="docutils literal notranslate"><span class="pre">name</span></code> and a <code class="docutils literal notranslate"><span class="pre">dev_type</span></code> (gpu, cpu, all). You can use the <code class="docutils literal notranslate"><span class="pre">select_device</span></code> arguments to precisely select the device you want to use. This can be useful if you have multiple devices of the same type but not the same type (Hello Macbook Pro with M1 and M2 chips !).</p>
+</section>
+<section id="exercice-2-which-device-to-choose">
+<h2>Exercice 2: Which device to choose?<a class="headerlink" href="#exercice-2-which-device-to-choose" title="Permalink to this heading">#</a></h2>
+<p>For the lucky of you who have access to multiple devices, you might wonder which one to choose. Here are some hints:</p>
+<ul class="simple">
+<li><p>Prefer GPU over CPU for speed</p></li>
+<li><p>Prefer GPU with more memory over GPU with less memory (<em><code class="docutils literal notranslate"><span class="pre">GLOBAL_MEM_SIZE</span></code></em>, <em><code class="docutils literal notranslate"><span class="pre">MAX_MEM_ALLOC_SIZE</span></code></em>)</p></li>
+<li><p>Prefer GPU with more or faster compute units (<em><code class="docutils literal notranslate"><span class="pre">MAX_COMPUTE_UNITS</span></code></em>, <em><code class="docutils literal notranslate"><span class="pre">MAX_CLOCK_FREQUENCY</span></code></em>)</p></li>
+</ul>
+<p>Those information can be retrieve using the <code class="docutils literal notranslate"><span class="pre">cl_info</span></code> method to print the <strong>full</strong> information of all the devices available.</p>
+<p>Print them and tell us which one, in your opinion, is the most adapted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cle</span><span class="o">.</span><span class="n">cl_info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NVIDIA CUDA
+EXTENSIONS:cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_fp64 cl_khr_3d_image_writes cl_khr_byte_addressable_store cl_khr_icd cl_khr_gl_sharing cl_nv_compiler_options cl_nv_device_attribute_query cl_nv_pragma_unroll cl_nv_d3d10_sharing cl_khr_d3d10_sharing cl_nv_d3d11_sharing cl_nv_copy_opts cl_nv_create_buffer cl_khr_int64_base_atomics cl_khr_int64_extended_atomics cl_khr_device_uuid cl_khr_pci_bus_info cl_khr_external_semaphore cl_khr_external_memory cl_khr_external_semaphore_win32 cl_khr_external_memory_win32
+EXTENSIONS_WITH_VERSION:[&lt;pyopencl._cl.NameVersion object at 0x000001E2969618B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2969612B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E296961C30&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C830&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03CD70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03CAB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03CC70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C9B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A4F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C930&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A030&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A270&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A9F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A330&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A670&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A730&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AEB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695ADF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A5F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AAF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A1B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AA70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A1F0&gt;]
+HOST_TIMER_RESOLUTION:0
+NAME:NVIDIA CUDA
+NUMERIC_VERSION:12582912
+PROFILE:FULL_PROFILE
+VENDOR:NVIDIA Corporation
+VERSION:OpenCL 3.0 CUDA 12.2.79
+
+
+    NVIDIA GeForce RTX 3090
+       ADDRESS_BITS:64
+       ATOMIC_FENCE_CAPABILITIES:19
+       ATOMIC_MEMORY_CAPABILITIES:17
+       ATTRIBUTE_ASYNC_ENGINE_COUNT_NV:6
+       AVAILABLE:1
+       AVAILABLE_ASYNC_QUEUES_AMD:None
+       BOARD_NAME_AMD:None
+       BUILT_IN_KERNELS:
+       BUILT_IN_KERNELS_WITH_VERSION:[]
+       COMPILER_AVAILABLE:1
+       COMPUTE_CAPABILITY_MAJOR_NV:8
+       COMPUTE_CAPABILITY_MINOR_NV:6
+       DEVICE_ENQUEUE_CAPABILITIES:0
+       DOUBLE_FP_CONFIG:63
+       DRIVER_VERSION:536.23
+       ENDIAN_LITTLE:1
+       ERROR_CORRECTION_SUPPORT:0
+       EXECUTION_CAPABILITIES:1
+       EXTENSIONS:cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_fp64 cl_khr_3d_image_writes cl_khr_byte_addressable_store cl_khr_icd cl_khr_gl_sharing cl_nv_compiler_options cl_nv_device_attribute_query cl_nv_pragma_unroll cl_nv_d3d10_sharing cl_khr_d3d10_sharing cl_nv_d3d11_sharing cl_nv_copy_opts cl_nv_create_buffer cl_khr_int64_base_atomics cl_khr_int64_extended_atomics cl_khr_device_uuid cl_khr_pci_bus_info cl_khr_external_semaphore cl_khr_external_memory cl_khr_external_semaphore_win32 cl_khr_external_memory_win32
+       EXTENSIONS_WITH_VERSION:[&lt;pyopencl._cl.NameVersion object at 0x000001E296961C30&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C830&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03CD70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03CAB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03CC70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C930&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AD70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A170&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A4F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C9B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A030&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A270&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A9F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A330&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A670&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A730&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AEB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695ADF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A5F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AAF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A1B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AA70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A1F0&gt;]
+       EXT_MEM_PADDING_IN_BYTES_QCOM:None
+       GENERIC_ADDRESS_SPACE_SUPPORT:0
+       GFXIP_MAJOR_AMD:None
+       GFXIP_MINOR_AMD:None
+       GLOBAL_FREE_MEMORY_AMD:None
+       GLOBAL_MEM_CACHELINE_SIZE:128
+       GLOBAL_MEM_CACHE_SIZE:2351104
+       GLOBAL_MEM_CACHE_TYPE:2
+       GLOBAL_MEM_CHANNELS_AMD:None
+       GLOBAL_MEM_CHANNEL_BANKS_AMD:None
+       GLOBAL_MEM_CHANNEL_BANK_WIDTH_AMD:None
+       GLOBAL_MEM_SIZE:25769148416
+       GLOBAL_VARIABLE_PREFERRED_TOTAL_SIZE:0
+       GPU_OVERLAP_NV:1
+       HALF_FP_CONFIG:None
+       HOST_UNIFIED_MEMORY:0
+       ILS_WITH_VERSION:[]
+       IL_VERSION:
+       IMAGE2D_MAX_HEIGHT:32768
+       IMAGE2D_MAX_WIDTH:32768
+       IMAGE3D_MAX_DEPTH:16384
+       IMAGE3D_MAX_HEIGHT:16384
+       IMAGE3D_MAX_WIDTH:16384
+       IMAGE_BASE_ADDRESS_ALIGNMENT:None
+       IMAGE_MAX_ARRAY_SIZE:2048
+       IMAGE_MAX_BUFFER_SIZE:268435456
+       IMAGE_PITCH_ALIGNMENT:None
+       IMAGE_SUPPORT:1
+       INTEGRATED_MEMORY_NV:0
+       KERNEL_EXEC_TIMEOUT_NV:1
+       LINKER_AVAILABLE:1
+       LOCAL_MEM_BANKS_AMD:None
+       LOCAL_MEM_SIZE:49152
+       LOCAL_MEM_SIZE_PER_COMPUTE_UNIT_AMD:None
+       LOCAL_MEM_TYPE:1
+       MAX_CLOCK_FREQUENCY:1695
+       MAX_COMPUTE_UNITS:82
+       MAX_CONSTANT_ARGS:9
+       MAX_CONSTANT_BUFFER_SIZE:65536
+       MAX_GLOBAL_VARIABLE_SIZE:0
+       MAX_MEM_ALLOC_SIZE:6442287104
+       MAX_NUM_SUB_GROUPS:0
+       MAX_ON_DEVICE_EVENTS:0
+       MAX_ON_DEVICE_QUEUES:0
+       MAX_PARAMETER_SIZE:32764
+       MAX_PIPE_ARGS:0
+       MAX_READ_IMAGE_ARGS:256
+       MAX_READ_WRITE_IMAGE_ARGS:0
+       MAX_SAMPLERS:32
+       MAX_WORK_GROUP_SIZE:1024
+       MAX_WORK_GROUP_SIZE_AMD:None
+       MAX_WORK_ITEM_DIMENSIONS:3
+       MAX_WORK_ITEM_SIZES:[1024, 1024, 64]
+       MAX_WRITE_IMAGE_ARGS:32
+       MEM_BASE_ADDR_ALIGN:4096
+       ME_VERSION_INTEL:None
+       MIN_DATA_TYPE_ALIGN_SIZE:128
+       NAME:NVIDIA GeForce RTX 3090
+       NATIVE_VECTOR_WIDTH_CHAR:1
+       NATIVE_VECTOR_WIDTH_DOUBLE:1
+       NATIVE_VECTOR_WIDTH_FLOAT:1
+       NATIVE_VECTOR_WIDTH_HALF:0
+       NATIVE_VECTOR_WIDTH_INT:1
+       NATIVE_VECTOR_WIDTH_LONG:1
+       NATIVE_VECTOR_WIDTH_SHORT:1
+       NON_UNIFORM_WORK_GROUP_SUPPORT:0
+       NUMERIC_VERSION:12582912
+       NUM_SIMULTANEOUS_INTEROPS_INTEL:None
+       OPENCL_C_ALL_VERSIONS:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695A070&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A870&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A530&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AC30&gt;]
+       OPENCL_C_FEATURES:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695A830&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A0B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A4B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AC70&gt;]
+       OPENCL_C_VERSION:OpenCL C 1.2 
+       PAGE_SIZE_QCOM:None
+       PARTITION_AFFINITY_DOMAIN:[0]
+       PARTITION_MAX_SUB_DEVICES:1
+       PARTITION_PROPERTIES:[0]
+       PARTITION_TYPE:[0]
+       PCIE_ID_AMD:None
+       PCI_BUS_ID_NV:101
+       PCI_DOMAIN_ID_NV:0
+       PCI_SLOT_ID_NV:0
+       PIPE_MAX_ACTIVE_RESERVATIONS:0
+       PIPE_MAX_PACKET_SIZE:0
+       PIPE_SUPPORT:0
+       PLATFORM:&lt;pyopencl.Platform &#39;NVIDIA CUDA&#39; at 0x1e2e1041aa0&gt;
+       PREFERRED_CONSTANT_BUFFER_SIZE_AMD:None
+       PREFERRED_GLOBAL_ATOMIC_ALIGNMENT:0
+       PREFERRED_INTEROP_USER_SYNC:0
+       PREFERRED_LOCAL_ATOMIC_ALIGNMENT:0
+       PREFERRED_PLATFORM_ATOMIC_ALIGNMENT:0
+       PREFERRED_VECTOR_WIDTH_CHAR:1
+       PREFERRED_VECTOR_WIDTH_DOUBLE:1
+       PREFERRED_VECTOR_WIDTH_FLOAT:1
+       PREFERRED_VECTOR_WIDTH_HALF:0
+       PREFERRED_VECTOR_WIDTH_INT:1
+       PREFERRED_VECTOR_WIDTH_LONG:1
+       PREFERRED_VECTOR_WIDTH_SHORT:1
+       PREFERRED_WORK_GROUP_SIZE_AMD:None
+       PREFERRED_WORK_GROUP_SIZE_MULTIPLE:32
+       PRINTF_BUFFER_SIZE:None
+       PROFILE:FULL_PROFILE
+       PROFILING_TIMER_OFFSET_AMD:None
+       PROFILING_TIMER_RESOLUTION:1000
+       QUEUE_ON_DEVICE_MAX_SIZE:0
+       QUEUE_ON_DEVICE_PREFERRED_SIZE:0
+       QUEUE_ON_DEVICE_PROPERTIES:0
+       QUEUE_ON_HOST_PROPERTIES:3
+       QUEUE_PROPERTIES:3
+       REFERENCE_COUNT:1
+       REGISTERS_PER_BLOCK_NV:65536
+       SIMD_INSTRUCTION_WIDTH_AMD:None
+       SIMD_PER_COMPUTE_UNIT_AMD:None
+       SIMD_WIDTH_AMD:None
+       SIMULTANEOUS_INTEROPS_INTEL:None
+       SINGLE_FP_CONFIG:191
+       SPIR_VERSIONS:None
+       SUB_GROUP_INDEPENDENT_FORWARD_PROGRESS:0
+       SVM_CAPABILITIES:1
+       THREAD_TRACE_SUPPORTED_AMD:None
+       TOPOLOGY_AMD:None
+       TYPE:4
+       VENDOR:NVIDIA Corporation
+       VENDOR_ID:4318
+       VERSION:OpenCL 3.0 CUDA
+       WARP_SIZE_NV:32
+       WAVEFRONT_WIDTH_AMD:None
+       WORK_GROUP_COLLECTIVE_FUNCTIONS_SUPPORT:0
+
+
+
+
+Intel(R) OpenCL
+EXTENSIONS:cl_khr_spirv_linkonce_odr cl_khr_fp64 cl_khr_icd cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_int64_base_atomics cl_khr_int64_extended_atomics cl_khr_byte_addressable_store cl_khr_depth_images cl_khr_3d_image_writes cl_khr_il_program cl_intel_unified_shared_memory_preview cl_intel_device_attribute_query cl_intel_subgroups cl_intel_subgroups_char cl_intel_subgroups_short cl_intel_subgroups_long cl_intel_spirv_subgroups cl_intel_required_subgroup_size cl_intel_exec_by_local_thread cl_intel_vec_len_hint cl_khr_spir cl_khr_image2d_from_buffer 
+EXTENSIONS_WITH_VERSION:[&lt;pyopencl._cl.NameVersion object at 0x000001E2EA03CC70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C930&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C9B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E296961C30&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2969612B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A630&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695ACF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A830&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A0B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AAB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A4B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AC70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A070&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A870&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A530&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AC30&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AD70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A170&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A4F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A030&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A270&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A9F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A330&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A670&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A730&gt;]
+HOST_TIMER_RESOLUTION:100
+NAME:Intel(R) OpenCL
+NUMERIC_VERSION:12582912
+PROFILE:FULL_PROFILE
+VENDOR:Intel(R) Corporation
+VERSION:OpenCL 3.0 WINDOWS
+
+
+    Intel(R) Core(TM) i9-10940X CPU @ 3.30GHz
+       ADDRESS_BITS:64
+       ATOMIC_FENCE_CAPABILITIES:127
+       ATOMIC_MEMORY_CAPABILITIES:119
+       ATTRIBUTE_ASYNC_ENGINE_COUNT_NV:None
+       AVAILABLE:1
+       AVAILABLE_ASYNC_QUEUES_AMD:None
+       BOARD_NAME_AMD:None
+       BUILT_IN_KERNELS:
+       BUILT_IN_KERNELS_WITH_VERSION:[]
+       COMPILER_AVAILABLE:1
+       COMPUTE_CAPABILITY_MAJOR_NV:None
+       COMPUTE_CAPABILITY_MINOR_NV:None
+       DEVICE_ENQUEUE_CAPABILITIES:3
+       DOUBLE_FP_CONFIG:63
+       DRIVER_VERSION:2023.15.3.0.20_160000
+       ENDIAN_LITTLE:1
+       ERROR_CORRECTION_SUPPORT:0
+       EXECUTION_CAPABILITIES:3
+       EXTENSIONS:cl_khr_spirv_linkonce_odr cl_khr_fp64 cl_khr_icd cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics cl_khr_int64_base_atomics cl_khr_int64_extended_atomics cl_khr_byte_addressable_store cl_khr_depth_images cl_khr_3d_image_writes cl_khr_il_program cl_intel_unified_shared_memory_preview cl_intel_device_attribute_query cl_intel_subgroups cl_intel_subgroups_char cl_intel_subgroups_short cl_intel_subgroups_long cl_intel_spirv_subgroups cl_intel_required_subgroup_size cl_intel_exec_by_local_thread cl_intel_vec_len_hint cl_khr_spir cl_khr_image2d_from_buffer 
+       EXTENSIONS_WITH_VERSION:[&lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C930&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2EA03C9B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E296961C30&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E2969612B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695ADF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A630&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695ACF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A830&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A0B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AEB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AAB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A4B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AC70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A070&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A870&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A530&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AC30&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AD70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A170&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A4F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A030&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A270&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A9F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A330&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A670&gt;]
+       EXT_MEM_PADDING_IN_BYTES_QCOM:None
+       GENERIC_ADDRESS_SPACE_SUPPORT:1
+       GFXIP_MAJOR_AMD:None
+       GFXIP_MINOR_AMD:None
+       GLOBAL_FREE_MEMORY_AMD:None
+       GLOBAL_MEM_CACHELINE_SIZE:64
+       GLOBAL_MEM_CACHE_SIZE:262144
+       GLOBAL_MEM_CACHE_TYPE:2
+       GLOBAL_MEM_CHANNELS_AMD:None
+       GLOBAL_MEM_CHANNEL_BANKS_AMD:None
+       GLOBAL_MEM_CHANNEL_BANK_WIDTH_AMD:None
+       GLOBAL_MEM_SIZE:137111146496
+       GLOBAL_VARIABLE_PREFERRED_TOTAL_SIZE:65536
+       GPU_OVERLAP_NV:None
+       HALF_FP_CONFIG:None
+       HOST_UNIFIED_MEMORY:1
+       ILS_WITH_VERSION:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695A730&gt;]
+       IL_VERSION:SPIR-V_1.0
+       IMAGE2D_MAX_HEIGHT:16384
+       IMAGE2D_MAX_WIDTH:16384
+       IMAGE3D_MAX_DEPTH:2048
+       IMAGE3D_MAX_HEIGHT:2048
+       IMAGE3D_MAX_WIDTH:2048
+       IMAGE_BASE_ADDRESS_ALIGNMENT:None
+       IMAGE_MAX_ARRAY_SIZE:2048
+       IMAGE_MAX_BUFFER_SIZE:4284723328
+       IMAGE_PITCH_ALIGNMENT:None
+       IMAGE_SUPPORT:1
+       INTEGRATED_MEMORY_NV:None
+       KERNEL_EXEC_TIMEOUT_NV:None
+       LINKER_AVAILABLE:1
+       LOCAL_MEM_BANKS_AMD:None
+       LOCAL_MEM_SIZE:32768
+       LOCAL_MEM_SIZE_PER_COMPUTE_UNIT_AMD:None
+       LOCAL_MEM_TYPE:2
+       MAX_CLOCK_FREQUENCY:3300
+       MAX_COMPUTE_UNITS:28
+       MAX_CONSTANT_ARGS:480
+       MAX_CONSTANT_BUFFER_SIZE:131072
+       MAX_GLOBAL_VARIABLE_SIZE:65536
+       MAX_MEM_ALLOC_SIZE:68555573248
+       MAX_NUM_SUB_GROUPS:2048
+       MAX_ON_DEVICE_EVENTS:4294967295
+       MAX_ON_DEVICE_QUEUES:4294967295
+       MAX_PARAMETER_SIZE:3840
+       MAX_PIPE_ARGS:16
+       MAX_READ_IMAGE_ARGS:480
+       MAX_READ_WRITE_IMAGE_ARGS:480
+       MAX_SAMPLERS:480
+       MAX_WORK_GROUP_SIZE:8192
+       MAX_WORK_GROUP_SIZE_AMD:None
+       MAX_WORK_ITEM_DIMENSIONS:3
+       MAX_WORK_ITEM_SIZES:[8192, 8192, 8192]
+       MAX_WRITE_IMAGE_ARGS:480
+       MEM_BASE_ADDR_ALIGN:1024
+       ME_VERSION_INTEL:None
+       MIN_DATA_TYPE_ALIGN_SIZE:128
+       NAME:Intel(R) Core(TM) i9-10940X CPU @ 3.30GHz
+       NATIVE_VECTOR_WIDTH_CHAR:64
+       NATIVE_VECTOR_WIDTH_DOUBLE:8
+       NATIVE_VECTOR_WIDTH_FLOAT:16
+       NATIVE_VECTOR_WIDTH_HALF:0
+       NATIVE_VECTOR_WIDTH_INT:16
+       NATIVE_VECTOR_WIDTH_LONG:8
+       NATIVE_VECTOR_WIDTH_SHORT:32
+       NON_UNIFORM_WORK_GROUP_SUPPORT:1
+       NUMERIC_VERSION:12582912
+       NUM_SIMULTANEOUS_INTEROPS_INTEL:None
+       OPENCL_C_ALL_VERSIONS:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695AAF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A1B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AA70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2F0&gt;]
+       OPENCL_C_FEATURES:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695A230&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D670&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D8F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D7B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695DD70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D470&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695DF70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D6B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D430&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695DEF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D530&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D570&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D370&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D0B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695D3B0&gt;]
+       OPENCL_C_VERSION:OpenCL C 3.0 
+       PAGE_SIZE_QCOM:None
+       PARTITION_AFFINITY_DOMAIN:[0]
+       PARTITION_MAX_SUB_DEVICES:28
+       PARTITION_PROPERTIES:[4231, 4230, 16466]
+       PARTITION_TYPE:[]
+       PCIE_ID_AMD:None
+       PCI_BUS_ID_NV:None
+       PCI_DOMAIN_ID_NV:None
+       PCI_SLOT_ID_NV:None
+       PIPE_MAX_ACTIVE_RESERVATIONS:9362
+       PIPE_MAX_PACKET_SIZE:1024
+       PIPE_SUPPORT:1
+       PLATFORM:&lt;pyopencl.Platform &#39;Intel(R) OpenCL&#39; at 0x1e2decabda0&gt;
+       PREFERRED_CONSTANT_BUFFER_SIZE_AMD:None
+       PREFERRED_GLOBAL_ATOMIC_ALIGNMENT:64
+       PREFERRED_INTEROP_USER_SYNC:0
+       PREFERRED_LOCAL_ATOMIC_ALIGNMENT:0
+       PREFERRED_PLATFORM_ATOMIC_ALIGNMENT:64
+       PREFERRED_VECTOR_WIDTH_CHAR:1
+       PREFERRED_VECTOR_WIDTH_DOUBLE:1
+       PREFERRED_VECTOR_WIDTH_FLOAT:1
+       PREFERRED_VECTOR_WIDTH_HALF:0
+       PREFERRED_VECTOR_WIDTH_INT:1
+       PREFERRED_VECTOR_WIDTH_LONG:1
+       PREFERRED_VECTOR_WIDTH_SHORT:1
+       PREFERRED_WORK_GROUP_SIZE_AMD:None
+       PREFERRED_WORK_GROUP_SIZE_MULTIPLE:128
+       PRINTF_BUFFER_SIZE:None
+       PROFILE:FULL_PROFILE
+       PROFILING_TIMER_OFFSET_AMD:None
+       PROFILING_TIMER_RESOLUTION:100
+       QUEUE_ON_DEVICE_MAX_SIZE:4294967295
+       QUEUE_ON_DEVICE_PREFERRED_SIZE:4294967295
+       QUEUE_ON_DEVICE_PROPERTIES:3
+       QUEUE_ON_HOST_PROPERTIES:3
+       QUEUE_PROPERTIES:3
+       REFERENCE_COUNT:1
+       REGISTERS_PER_BLOCK_NV:None
+       SIMD_INSTRUCTION_WIDTH_AMD:None
+       SIMD_PER_COMPUTE_UNIT_AMD:None
+       SIMD_WIDTH_AMD:None
+       SIMULTANEOUS_INTEROPS_INTEL:None
+       SINGLE_FP_CONFIG:7
+       SPIR_VERSIONS:1.2
+       SUB_GROUP_INDEPENDENT_FORWARD_PROGRESS:0
+       SVM_CAPABILITIES:15
+       THREAD_TRACE_SUPPORTED_AMD:None
+       TOPOLOGY_AMD:None
+       TYPE:2
+       VENDOR:Intel(R) Corporation
+       VENDOR_ID:32902
+       VERSION:OpenCL 3.0 (Build 0)
+       WARP_SIZE_NV:None
+       WAVEFRONT_WIDTH_AMD:None
+       WORK_GROUP_COLLECTIVE_FUNCTIONS_SUPPORT:1
+
+
+
+
+Intel(R) FPGA Emulation Platform for OpenCL(TM)
+EXTENSIONS:cl_khr_spirv_linkonce_odr cl_khr_fp64 cl_khr_icd cl_khr_byte_addressable_store cl_intel_fpga_host_pipe cles_khr_int64 cl_khr_il_program cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics 
+EXTENSIONS_WITH_VERSION:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695A230&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A1F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AAF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A1B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AA70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A5F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A730&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695ADF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A630&gt;]
+HOST_TIMER_RESOLUTION:None
+NAME:Intel(R) FPGA Emulation Platform for OpenCL(TM)
+NUMERIC_VERSION:4202496
+PROFILE:EMBEDDED_PROFILE
+VENDOR:Intel(R) Corporation
+VERSION:OpenCL 1.2 Intel(R) FPGA SDK for OpenCL(TM), Version 20.3
+
+
+    Intel(R) FPGA Emulation Device
+       ADDRESS_BITS:64
+       ATOMIC_FENCE_CAPABILITIES:19
+       ATOMIC_MEMORY_CAPABILITIES:17
+       ATTRIBUTE_ASYNC_ENGINE_COUNT_NV:None
+       AVAILABLE:1
+       AVAILABLE_ASYNC_QUEUES_AMD:None
+       BOARD_NAME_AMD:None
+       BUILT_IN_KERNELS:
+       BUILT_IN_KERNELS_WITH_VERSION:[]
+       COMPILER_AVAILABLE:1
+       COMPUTE_CAPABILITY_MAJOR_NV:None
+       COMPUTE_CAPABILITY_MINOR_NV:None
+       DEVICE_ENQUEUE_CAPABILITIES:None
+       DOUBLE_FP_CONFIG:63
+       DRIVER_VERSION:2023.15.3.0.20_160000
+       ENDIAN_LITTLE:1
+       ERROR_CORRECTION_SUPPORT:0
+       EXECUTION_CAPABILITIES:3
+       EXTENSIONS:cl_khr_spirv_linkonce_odr cl_khr_fp64 cl_khr_icd cl_khr_byte_addressable_store cl_intel_fpga_host_pipe cles_khr_int64 cl_khr_il_program cl_khr_global_int32_base_atomics cl_khr_global_int32_extended_atomics cl_khr_local_int32_base_atomics cl_khr_local_int32_extended_atomics 
+       EXTENSIONS_WITH_VERSION:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695A1F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AAF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A1B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AA70&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A730&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695ADF0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A2B0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A630&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A5F0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695ACF0&gt;]
+       EXT_MEM_PADDING_IN_BYTES_QCOM:None
+       GENERIC_ADDRESS_SPACE_SUPPORT:None
+       GFXIP_MAJOR_AMD:None
+       GFXIP_MINOR_AMD:None
+       GLOBAL_FREE_MEMORY_AMD:None
+       GLOBAL_MEM_CACHELINE_SIZE:64
+       GLOBAL_MEM_CACHE_SIZE:262144
+       GLOBAL_MEM_CACHE_TYPE:2
+       GLOBAL_MEM_CHANNELS_AMD:None
+       GLOBAL_MEM_CHANNEL_BANKS_AMD:None
+       GLOBAL_MEM_CHANNEL_BANK_WIDTH_AMD:None
+       GLOBAL_MEM_SIZE:137111146496
+       GLOBAL_VARIABLE_PREFERRED_TOTAL_SIZE:65536
+       GPU_OVERLAP_NV:None
+       HALF_FP_CONFIG:6
+       HOST_UNIFIED_MEMORY:1
+       ILS_WITH_VERSION:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695A830&gt;]
+       IL_VERSION:SPIR-V_1.0
+       IMAGE2D_MAX_HEIGHT:16384
+       IMAGE2D_MAX_WIDTH:16384
+       IMAGE3D_MAX_DEPTH:2048
+       IMAGE3D_MAX_HEIGHT:2048
+       IMAGE3D_MAX_WIDTH:2048
+       IMAGE_BASE_ADDRESS_ALIGNMENT:None
+       IMAGE_MAX_ARRAY_SIZE:2048
+       IMAGE_MAX_BUFFER_SIZE:4284723328
+       IMAGE_PITCH_ALIGNMENT:None
+       IMAGE_SUPPORT:0
+       INTEGRATED_MEMORY_NV:None
+       KERNEL_EXEC_TIMEOUT_NV:None
+       LINKER_AVAILABLE:1
+       LOCAL_MEM_BANKS_AMD:None
+       LOCAL_MEM_SIZE:262144
+       LOCAL_MEM_SIZE_PER_COMPUTE_UNIT_AMD:None
+       LOCAL_MEM_TYPE:2
+       MAX_CLOCK_FREQUENCY:3300
+       MAX_COMPUTE_UNITS:28
+       MAX_CONSTANT_ARGS:480
+       MAX_CONSTANT_BUFFER_SIZE:131072
+       MAX_GLOBAL_VARIABLE_SIZE:65536
+       MAX_MEM_ALLOC_SIZE:68555573248
+       MAX_NUM_SUB_GROUPS:None
+       MAX_ON_DEVICE_EVENTS:4294967295
+       MAX_ON_DEVICE_QUEUES:4294967295
+       MAX_PARAMETER_SIZE:3840
+       MAX_PIPE_ARGS:16
+       MAX_READ_IMAGE_ARGS:480
+       MAX_READ_WRITE_IMAGE_ARGS:480
+       MAX_SAMPLERS:480
+       MAX_WORK_GROUP_SIZE:67108864
+       MAX_WORK_GROUP_SIZE_AMD:None
+       MAX_WORK_ITEM_DIMENSIONS:3
+       MAX_WORK_ITEM_SIZES:[67108864, 67108864, 67108864]
+       MAX_WRITE_IMAGE_ARGS:480
+       MEM_BASE_ADDR_ALIGN:1024
+       ME_VERSION_INTEL:None
+       MIN_DATA_TYPE_ALIGN_SIZE:128
+       NAME:Intel(R) FPGA Emulation Device
+       NATIVE_VECTOR_WIDTH_CHAR:64
+       NATIVE_VECTOR_WIDTH_DOUBLE:8
+       NATIVE_VECTOR_WIDTH_FLOAT:16
+       NATIVE_VECTOR_WIDTH_HALF:0
+       NATIVE_VECTOR_WIDTH_INT:16
+       NATIVE_VECTOR_WIDTH_LONG:8
+       NATIVE_VECTOR_WIDTH_SHORT:32
+       NON_UNIFORM_WORK_GROUP_SUPPORT:None
+       NUMERIC_VERSION:4202496
+       NUM_SIMULTANEOUS_INTEROPS_INTEL:None
+       OPENCL_C_ALL_VERSIONS:[&lt;pyopencl._cl.NameVersion object at 0x000001E29695AEB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695AAB0&gt;, &lt;pyopencl._cl.NameVersion object at 0x000001E29695A4B0&gt;]
+       OPENCL_C_FEATURES:None
+       OPENCL_C_VERSION:OpenCL C 1.2 
+       PAGE_SIZE_QCOM:None
+       PARTITION_AFFINITY_DOMAIN:[0]
+       PARTITION_MAX_SUB_DEVICES:28
+       PARTITION_PROPERTIES:[4231, 4230, 16466]
+       PARTITION_TYPE:[]
+       PCIE_ID_AMD:None
+       PCI_BUS_ID_NV:None
+       PCI_DOMAIN_ID_NV:None
+       PCI_SLOT_ID_NV:None
+       PIPE_MAX_ACTIVE_RESERVATIONS:0
+       PIPE_MAX_PACKET_SIZE:1024
+       PIPE_SUPPORT:None
+       PLATFORM:&lt;pyopencl.Platform &#39;Intel(R) FPGA Emulation Platform for OpenCL(TM)&#39; at 0x1e2deca9ba0&gt;
+       PREFERRED_CONSTANT_BUFFER_SIZE_AMD:None
+       PREFERRED_GLOBAL_ATOMIC_ALIGNMENT:64
+       PREFERRED_INTEROP_USER_SYNC:0
+       PREFERRED_LOCAL_ATOMIC_ALIGNMENT:0
+       PREFERRED_PLATFORM_ATOMIC_ALIGNMENT:64
+       PREFERRED_VECTOR_WIDTH_CHAR:1
+       PREFERRED_VECTOR_WIDTH_DOUBLE:1
+       PREFERRED_VECTOR_WIDTH_FLOAT:1
+       PREFERRED_VECTOR_WIDTH_HALF:0
+       PREFERRED_VECTOR_WIDTH_INT:1
+       PREFERRED_VECTOR_WIDTH_LONG:1
+       PREFERRED_VECTOR_WIDTH_SHORT:1
+       PREFERRED_WORK_GROUP_SIZE_AMD:None
+       PREFERRED_WORK_GROUP_SIZE_MULTIPLE:None
+       PRINTF_BUFFER_SIZE:None
+       PROFILE:EMBEDDED_PROFILE
+       PROFILING_TIMER_OFFSET_AMD:None
+       PROFILING_TIMER_RESOLUTION:100
+       QUEUE_ON_DEVICE_MAX_SIZE:4294967295
+       QUEUE_ON_DEVICE_PREFERRED_SIZE:4294967295
+       QUEUE_ON_DEVICE_PROPERTIES:3
+       QUEUE_ON_HOST_PROPERTIES:3
+       QUEUE_PROPERTIES:3
+       REFERENCE_COUNT:1
+       REGISTERS_PER_BLOCK_NV:None
+       SIMD_INSTRUCTION_WIDTH_AMD:None
+       SIMD_PER_COMPUTE_UNIT_AMD:None
+       SIMD_WIDTH_AMD:None
+       SIMULTANEOUS_INTEROPS_INTEL:None
+       SINGLE_FP_CONFIG:7
+       SPIR_VERSIONS:1.2
+       SUB_GROUP_INDEPENDENT_FORWARD_PROGRESS:None
+       SVM_CAPABILITIES:15
+       THREAD_TRACE_SUPPORTED_AMD:None
+       TOPOLOGY_AMD:None
+       TYPE:8
+       VENDOR:Intel(R) Corporation
+       VENDOR_ID:4466
+       VERSION:OpenCL 1.2 
+       WARP_SIZE_NV:None
+       WAVEFRONT_WIDTH_AMD:None
+       WORK_GROUP_COLLECTIVE_FUNCTIONS_SUPPORT:None
+
+
+
+
+Intel(R) FPGA SDK for OpenCL(TM)
+EXTENSIONS:cl_khr_byte_addressable_store cles_khr_int64 cl_khr_icd cl_khr_fp64 cl_intel_unified_shared_memory cl_intel_create_buffer_with_properties cl_intel_mem_channel_property cl_intel_mem_alloc_buffer_location
+EXTENSIONS_WITH_VERSION:None
+HOST_TIMER_RESOLUTION:None
+NAME:Intel(R) FPGA SDK for OpenCL(TM)
+NUMERIC_VERSION:None
+PROFILE:EMBEDDED_PROFILE
+VENDOR:Intel(R) Corporation
+VERSION:OpenCL 1.0 Intel(R) FPGA SDK for OpenCL(TM), Version 2023.1
+
+
+
+
+Current device: Intel(R) Core(TM) i9-10940X CPU @ 3.30GHz
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Tips:</strong> you may want to save this into a text file</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;cl_info.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./10_Clesperanto_and_cupy"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_Clesperanto_cupy_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Clesperanto and Cupy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="30_Clesperanto_apply_operations_on_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Apply operations on data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1-list-devices-and-select-a-device">Exercice 1: List devices and select a device</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2-which-device-to-choose">Exercice 2: Which device to choose?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Copyright: This work can be reused under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a> license unless mentioned otherwise.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

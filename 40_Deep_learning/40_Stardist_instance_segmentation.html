@@ -1,0 +1,988 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Check what devices we have access to…. &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '40_Deep_learning/40_Stardist_instance_segmentation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Train a semantic segmentation unet using Pytorch" href="35_Pytorch_semantic_segmentation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">GPU image analysis and Deep Learning using the Image.sc ecosystem</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_course_preparation/05_Module1.html">Course preparation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/10_Mambaforge_devbio.html">Mambaforge and devbio-napari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/15_Dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/18_Get_data.html">Get test data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/20_Test_deconvolution_libs.html">Test deconvolution imports</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/30_Test_deep_learning_libs.html">Test deep learning libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../10_Clesperanto_and_cupy/05_Clesperanto_cupy_intro.html">Clesperanto and Cupy</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/10_Clesperanto_select_devices.html">List and select devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/30_Clesperanto_apply_operations_on_data.html">Apply operations on data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/60_Cupy_basics.html">Basics of Cupy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/65_Cupy_dropin_replacement.html">Cupy as drop-in replacement for numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/70_Benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/80_Cupy_filtering.html">Image filtering using cupy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../20_Convolution_deconvolution/0_Intro_to_decon.html">Intro to Deconvolution and Restoration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/2_Cupy_forward.html">Implementing the forward model (Convolution) with cupy</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/4_Nuclei_Deconvolution_Segmentation.html">Nuclei Deconvolution and Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/10_Decon_systems_design.html">Deconvolution Systems Design</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../30_ML_pixel_classification/0_Intro_to_ml_pixel_classification.html">ML Pixel Classification</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../30_ML_pixel_classification/10_Napari_interactive_pixel_classification.html">DIY Interactive Segmentation with napari</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0_Intro_to_deep_learning.html">Intro to deep learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5_Pytorch_setup.html">Pytorch tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_Explore_data.html">Explore data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20_Make_labels.html">Label data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="30_Make_augment_patches.html">Make Augmented Patches</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="35_Pytorch_semantic_segmentation.html">Train a semantic segmentation unet using Pytorch</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Check what devices we have access to….</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning/issues/new?title=Issue%20on%20page%20%2F40_Deep_learning/40_Stardist_instance_segmentation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/40_Deep_learning/40_Stardist_instance_segmentation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Check what devices we have access to….</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Check what devices we have access to….</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-inputs-and-ground-truth">Load inputs and ground truth</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-a-helper-to-collect-the-training-data">Use a helper to collect the training data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-images">Inspect images</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-in-to-training-and-validation-sets">Divide in to training and validation sets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#create-stardist-model">Create stardist model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-the-model">Train the model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-network-on-one-of-the-training-images-self-prediction">Test network on one of the training images (self prediction)</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">tnia.plotting.plt_helper</span> <span class="kn">import</span> <span class="n">imshow_multi2d</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="check-what-devices-we-have-access-to">
+<h1>Check what devices we have access to….<a class="headerlink" href="#check-what-devices-we-have-access-to" title="Permalink to this heading">#</a></h1>
+<p>Not as important to have a beefy GPU for 2D as it is for 3D, but let’s check</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visible_devices</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">visible_devices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[PhysicalDevice(name=&#39;/physical_device:CPU:0&#39;, device_type=&#39;CPU&#39;), PhysicalDevice(name=&#39;/physical_device:GPU:0&#39;, device_type=&#39;GPU&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-inputs-and-ground-truth">
+<h1>Load inputs and ground truth<a class="headerlink" href="#load-inputs-and-ground-truth" title="Permalink to this heading">#</a></h1>
+<p>We load directories called ‘input0’ and ‘ground truth0’ which should exist under <code class="docutils literal notranslate"><span class="pre">train_path</span></code>.  The reason we append ‘0’ to the end of the name is simply because some of the code that generates image and label sets is meant to work on multiple channels (so the 0 is the channel number)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">parent_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;../../data/bees&#39;</span><span class="p">)</span>
+<span class="n">train_path</span><span class="o">=</span> <span class="n">parent_path</span> <span class="o">/</span> <span class="s1">&#39;patches&#39;</span> 
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">train_path</span> <span class="o">/</span> <span class="s1">&#39;info.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+    <span class="c1"># Access the sub_sample parameter</span>
+    <span class="n">sub_sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sub_sample&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sub_sample&#39;</span><span class="p">,</span><span class="n">sub_sample</span><span class="p">)</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;axes&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span><span class="n">axes</span><span class="p">)</span>
+
+<span class="n">image_patch_path</span> <span class="o">=</span> <span class="n">train_path</span> <span class="o">/</span> <span class="s1">&#39;ground truth0&#39;</span>
+<span class="n">label_patch_path</span> <span class="o">=</span> <span class="n">train_path</span> <span class="o">/</span> <span class="s1">&#39;input0&#39;</span>
+
+<span class="n">n_rays</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">train_path</span> <span class="o">/</span> <span class="s1">&#39;info.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+    <span class="c1"># Access the sub_sample parameter</span>
+    <span class="n">sub_sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sub_sample&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sub_sample&#39;</span><span class="p">,</span><span class="n">sub_sample</span><span class="p">)</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;axes&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span><span class="n">axes</span><span class="p">)</span>
+
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">parent_path</span> <span class="o">/</span> <span class="s1">&#39;model&#39;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model_path</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">image_patch_path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;image_patch_path does not exist&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">label_patch_path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;label_patch_path does not exist&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sub_sample 1
+axes YX
+sub_sample 1
+axes YX
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="use-a-helper-to-collect-the-training-data">
+<h1>Use a helper to collect the training data<a class="headerlink" href="#use-a-helper-to-collect-the-training-data" title="Permalink to this heading">#</a></h1>
+<p>The helper will also normalize the inputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tnia.deeplearning.dl_helper</span> <span class="kn">import</span> <span class="n">collect_training_data</span>
+<span class="n">add_trivial_channel</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">axes</span> <span class="o">==</span> <span class="s1">&#39;YX&#39;</span><span class="p">:</span>
+    <span class="n">add_trivial_channel</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">collect_training_data</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">sub_sample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">downsample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_trivial_channel</span> <span class="o">=</span> <span class="n">add_trivial_channel</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type X &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type Y &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type X  &lt;class &#39;list&#39;&gt;
+type Y  &lt;class &#39;list&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inspect-images">
+<h1>Inspect images<a class="headerlink" href="#inspect-images" title="Permalink to this heading">#</a></h1>
+<p>Output training data shapes and plot images to make sure image and label set look OK</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">fig</span><span class="o">=</span><span class="n">imshow_multi2d</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">index</span><span class="p">]],</span> <span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(256, 256, 1) (256, 256)
+-0.06741573 1.0
+</pre></div>
+</div>
+<img alt="../_images/2a9da8724ffa1d42b3c41624b187040d6566818b64002fd0e754804bee0c9a5b.png" src="../_images/2a9da8724ffa1d42b3c41624b187040d6566818b64002fd0e754804bee0c9a5b.png" />
+</div>
+</div>
+</section>
+<section id="divide-in-to-training-and-validation-sets">
+<h1>Divide in to training and validation sets<a class="headerlink" href="#divide-in-to-training-and-validation-sets" title="Permalink to this heading">#</a></h1>
+<p>Use a helper to divide into training and validation.  Note the conversion to numpy arrays (needed for stardist training) is also baked into the divide_training_data function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tnia.deeplearning.dl_helper</span> <span class="kn">import</span> <span class="n">divide_training_data</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">Y_val</span> <span class="o">=</span> <span class="n">divide_training_data</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">val_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type X_train &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type X_train  &lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-stardist-model">
+<h1>Create stardist model<a class="headerlink" href="#create-stardist-model" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;YX&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">stardist.models</span> <span class="kn">import</span> <span class="n">StarDist2D</span><span class="p">,</span> <span class="n">Config2D</span>
+<span class="kn">from</span> <span class="nn">tnia.deeplearning.dl_helper</span> <span class="kn">import</span> <span class="n">augmenter</span>
+
+<span class="k">if</span> <span class="n">axes</span> <span class="o">==</span> <span class="s1">&#39;YXC&#39;</span><span class="p">:</span>
+    <span class="n">n_channel_in</span> <span class="o">=</span><span class="mi">3</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">n_channel_in</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config2D</span> <span class="p">(</span><span class="n">n_rays</span><span class="o">=</span><span class="n">n_rays</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span><span class="n">n_channel_in</span><span class="o">=</span><span class="n">n_channel_in</span><span class="p">,</span> <span class="n">train_patch_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="mi">256</span><span class="p">),</span> <span class="n">unet_n_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">new_model</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="n">new_model</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">StarDist2D</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;model1&quot;</span><span class="p">,</span> <span class="n">basedir</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">StarDist2D</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;model1&quot;</span><span class="p">,</span> <span class="n">basedir</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading network weights from &#39;weights_best.h5&#39;.
+Loading thresholds from &#39;thresholds.json&#39;.
+Using default values: prob_thresh=0.475919, nms_thresh=0.3.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="train-the-model">
+<h1>Train the model<a class="headerlink" href="#train-the-model" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y_train</span> <span class="o">=</span> <span class="n">Y_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int16&#39;</span><span class="p">)</span>
+<span class="n">Y_val</span> <span class="o">=</span> <span class="n">Y_val</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int16&#39;</span><span class="p">)</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Y_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((98, 256, 256, 1), (98, 256, 256))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config2D(n_dim=2, axes=&#39;YXC&#39;, n_channel_in=1, n_channel_out=33, train_checkpoint=&#39;weights_best.h5&#39;, train_checkpoint_last=&#39;weights_last.h5&#39;, train_checkpoint_epoch=&#39;weights_now.h5&#39;, n_rays=32, grid=(1, 1), backbone=&#39;unet&#39;, n_classes=None, unet_n_depth=4, unet_kernel_size=(3, 3), unet_n_filter_base=32, unet_n_conv_per_depth=2, unet_pool=(2, 2), unet_activation=&#39;relu&#39;, unet_last_activation=&#39;relu&#39;, unet_batch_norm=False, unet_dropout=0.0, unet_prefix=&#39;&#39;, net_conv_after_unet=128, net_input_shape=(None, None, 1), net_mask_shape=(None, None, 1), train_shape_completion=False, train_completion_crop=32, train_patch_size=(256, 256), train_background_reg=0.0001, train_foreground_only=0.9, train_sample_cache=True, train_dist_loss=&#39;mae&#39;, train_loss_weights=(1, 0.2), train_class_weights=(1, 1), train_epochs=400, train_steps_per_epoch=100, train_learning_rate=0.0003, train_batch_size=4, train_n_val_patches=None, train_tensorboard=True, train_reduce_lr={&#39;factor&#39;: 0.5, &#39;patience&#39;: 40, &#39;min_delta&#39;: 0}, use_gpu=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span><span class="n">Y_val</span><span class="p">),</span><span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">augmenter</span><span class="o">=</span><span class="n">augmenter</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
+WARNING:tensorflow:AutoGraph could not transform &lt;function _gcd_import at 0x000001A9176A13A0&gt; and will run it as-is.
+Cause: Unable to locate the source code of &lt;function _gcd_import at 0x000001A9176A13A0&gt;. Note that functions defined in certain environments, like the interactive Python shell, do not expose their source code. If that is the case, you should define them in a .py source file. If you are certain the code is graph-compatible, wrap the call using @tf.autograph.experimental.do_not_convert. Original error: could not get source code
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING: AutoGraph could not transform &lt;function _gcd_import at 0x000001A9176A13A0&gt; and will run it as-is.
+Cause: Unable to locate the source code of &lt;function _gcd_import at 0x000001A9176A13A0&gt;. Note that functions defined in certain environments, like the interactive Python shell, do not expose their source code. If that is the case, you should define them in a .py source file. If you are certain the code is graph-compatible, wrap the call using @tf.autograph.experimental.do_not_convert. Original error: could not get source code
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+2/2 [==============================] - 1s 9ms/step - loss: 0.6380 - prob_loss: 0.1721 - dist_loss: 2.3292 - prob_kld: 0.0273 - dist_relevant_mae: 2.3283 - dist_relevant_mse: 13.3484 - dist_dist_iou_metric: 0.77
+100/100 [==============================] - 38s 336ms/step - loss: 0.6380 - prob_loss: 0.1721 - dist_loss: 2.3292 - prob_kld: 0.0273 - dist_relevant_mae: 2.3283 - dist_relevant_mse: 13.3484 - dist_dist_iou_metric: 0.7741 - val_loss: 0.5132 - val_prob_loss: 0.0436 - val_dist_loss: 2.3477 - val_prob_kld: 0.0052 - val_dist_relevant_mae: 2.3468 - val_dist_relevant_mse: 17.3159 - val_dist_dist_iou_metric: 0.7432 - lr: 3.0000e-04
+Epoch 2/20
+ 91/100 [==========================&gt;...] - ETA: 2s - loss: 0.5857 - prob_loss: 0.1616 - dist_loss: 2.1205 - prob_kld: 0.0183 - dist_relevant_mae: 2.1196 - dist_relevant_mse: 11.4922 - dist_dist_iou_metric: 0.7900
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">Kernel</span> <span class="n">crashed</span> <span class="k">while</span> <span class="n">executing</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">current</span> <span class="n">cell</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">previous</span> <span class="n">cell</span><span class="o">.</span> 
+
+<span class="n">Please</span> <span class="n">review</span> <span class="n">the</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">cell</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">identify</span> <span class="n">a</span> <span class="n">possible</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">failure</span><span class="o">.</span> 
+
+<span class="n">Click</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;https://aka.ms/vscodeJupyterKernelCrash&#39;</span><span class="o">&gt;</span><span class="n">here</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">info</span><span class="o">.</span> 
+
+<span class="n">View</span> <span class="n">Jupyter</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;command:jupyter.viewOutput&#39;</span><span class="o">&gt;</span><span class="n">log</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">further</span> <span class="n">details</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">optimize_thresholds</span><span class="p">(</span><span class="n">X_val</span><span class="p">,</span> <span class="n">Y_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NMS threshold = 0.3:  80%|████████  | 16/20 [00:04&lt;00:01,  3.76it/s, 0.476 -&gt; 0.639]
+NMS threshold = 0.4:  80%|████████  | 16/20 [00:01&lt;00:00, 11.50it/s, 0.476 -&gt; 0.639]
+NMS threshold = 0.5:  80%|████████  | 16/20 [00:01&lt;00:00, 11.45it/s, 0.476 -&gt; 0.639]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using optimized values: prob_thresh=0.475919, nms_thresh=0.3.
+Saving to &#39;thresholds.json&#39;.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;prob&#39;: 0.4759193501544974, &#39;nms&#39;: 0.3}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="test-network-on-one-of-the-training-images-self-prediction">
+<h1>Test network on one of the training images (self prediction)<a class="headerlink" href="#test-network-on-one-of-the-training-images-self-prediction" title="Permalink to this heading">#</a></h1>
+<p>Self prediction is not a good way to evaluate the ‘real’ performance of the NN.  However it is good sanity test.  If the self prediction looks wrong something really went bad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">labels</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_instances</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">prob_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">nms_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">imshow_multi2d</span><span class="p">([</span><span class="n">X_train</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">Y_train</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">labels</span><span class="p">],[</span><span class="s1">&#39;input&#39;</span><span class="p">,</span><span class="s1">&#39;ground truth&#39;</span><span class="p">,</span><span class="s1">&#39;predicted instances&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3144b9d62d174385b886d3e010ca8d63f3fe5d344716bb0e4af7f56044fd76a6.png" src="../_images/3144b9d62d174385b886d3e010ca8d63f3fe5d344716bb0e4af7f56044fd76a6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">from</span> <span class="nn">tnia.plotting.plt_helper</span> <span class="kn">import</span> <span class="n">random_label_cmap</span>
+<span class="kn">from</span> <span class="nn">tnia.deeplearning.dl_helper</span> <span class="kn">import</span> <span class="n">ray4_to_ellipsoid2d_labels</span>
+<span class="kn">from</span> <span class="nn">csbdeep.utils</span> <span class="kn">import</span> <span class="n">normalize</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">parent_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;../../data/bees&#39;</span><span class="p">)</span>
+<span class="n">test_image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">parent_path</span> <span class="o">/</span> <span class="sa">r</span><span class="s1">&#39;images test&#39;</span><span class="p">)</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">test_image_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.tif&#39;</span><span class="p">))</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1">#testim = imread(files[index]) </span>
+<span class="n">testim</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/bees2.tif&quot;</span><span class="p">)</span>
+
+<span class="n">testim</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">testim</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original min max&#39;</span><span class="p">,</span> <span class="n">testim</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">testim</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">testim</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">testim</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">99.8</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">labels</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_instances</span><span class="p">(</span><span class="n">testim</span><span class="p">,</span> <span class="n">prob_thresh</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nms_thresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">n_rays</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="n">labels2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="c1">#ray4_to_ellipsoid2d_labels(details[&#39;coord&#39;], testim.shape)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">imshow_multi2d</span><span class="p">([</span><span class="n">testim</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">labels2</span><span class="p">],[</span><span class="s1">&#39;input&#39;</span><span class="p">,</span><span class="s1">&#39;predicted octohedrons&#39;</span><span class="p">,</span> <span class="s1">&#39;rendered as ellipses&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">colormaps</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">random_label_cmap</span><span class="p">(),</span> <span class="n">random_label_cmap</span><span class="p">()])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">imshow_multi2d</span><span class="p">([</span><span class="n">testim</span><span class="p">,</span><span class="n">labels</span><span class="p">],[</span><span class="s1">&#39;input&#39;</span><span class="p">,</span><span class="s1">&#39;predicted octohedrons&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">colormaps</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">random_label_cmap</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original min max 13 226
+</pre></div>
+</div>
+<img alt="../_images/cbb0b5030450da7677455d16ef1b329ad15721bb33584dffc858b838ebc5fe74.png" src="../_images/cbb0b5030450da7677455d16ef1b329ad15721bb33584dffc858b838ebc5fe74.png" />
+<img alt="../_images/22badf0873ced85f83a77dc6bfa0830c1d83496579551e92e5b46e80c0ffc3e1.png" src="../_images/22badf0873ced85f83a77dc6bfa0830c1d83496579551e92e5b46e80c0ffc3e1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">napari</span>
+
+<span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">testim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;testim&#39;</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;labels&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>napari.manifest -&gt; &#39;napari-hello&#39; could not be imported: Cannot find module &#39;napari_plugins&#39; declared in entrypoint: &#39;napari_plugins:napari.yaml&#39;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Labels layer &#39;labels&#39; at 0x1b256f3cee0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test2</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test2</span><span class="p">)</span>
+<span class="n">test2</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(963, 1545, 4)
+</pre></div>
+</div>
+<img alt="../_images/ff6cfc37be89982404a8c4730e628ba7a639ea136b615c5de7e6e9138e013c12.png" src="../_images/ff6cfc37be89982404a8c4730e628ba7a639ea136b615c5de7e6e9138e013c12.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test3</span> <span class="o">=</span> <span class="n">test2</span><span class="p">[</span><span class="mi">400</span><span class="p">:</span><span class="mi">780</span><span class="p">,</span> <span class="mi">600</span><span class="p">:</span><span class="mi">1000</span><span class="p">,:]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1b25fd28820&gt;
+</pre></div>
+</div>
+<img alt="../_images/c5994c1668c19fd54aada70a4688cd93342088f22d8e11e3353e1f073b5533f0.png" src="../_images/c5994c1668c19fd54aada70a4688cd93342088f22d8e11e3353e1f073b5533f0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test2</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+<span class="n">test3</span> <span class="o">=</span> <span class="n">test2</span><span class="p">[</span><span class="mi">400</span><span class="p">:</span><span class="mi">780</span><span class="p">,</span> <span class="mi">600</span><span class="p">:</span><span class="mi">1000</span><span class="p">,:]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1b260540820&gt;
+</pre></div>
+</div>
+<img alt="../_images/d8535004393c925a4da747122bb283afdde424003c35be5d2c59211d8c120272.png" src="../_images/d8535004393c925a4da747122bb283afdde424003c35be5d2c59211d8c120272.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test2</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+<span class="n">test3</span> <span class="o">=</span> <span class="n">test2</span><span class="p">[</span><span class="mi">400</span><span class="p">:</span><span class="mi">780</span><span class="p">,</span> <span class="mi">600</span><span class="p">:</span><span class="mi">1000</span><span class="p">,:]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1b25fc37af0&gt;
+</pre></div>
+</div>
+<img alt="../_images/b498e85b5a69640e0da282ec1a099538f5131e505ab309eab6b62eaea4bf4d77.png" src="../_images/b498e85b5a69640e0da282ec1a099538f5131e505ab309eab6b62eaea4bf4d77.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./40_Deep_learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="35_Pytorch_semantic_segmentation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Train a semantic segmentation unet using Pytorch</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Check what devices we have access to….</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-inputs-and-ground-truth">Load inputs and ground truth</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-a-helper-to-collect-the-training-data">Use a helper to collect the training data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-images">Inspect images</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-in-to-training-and-validation-sets">Divide in to training and validation sets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#create-stardist-model">Create stardist model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-the-model">Train the model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-network-on-one-of-the-training-images-self-prediction">Test network on one of the training images (self prediction)</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Copyright: This work can be reused under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a> license unless mentioned otherwise.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1132 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Make Augmented Patches &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '40_Deep_learning/30_Make_augment_patches';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Train a semantic segmentation unet using Pytorch" href="35_Pytorch_semantic_segmentation.html" />
+    <link rel="prev" title="Label data" href="20_Make_labels.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">GPU image analysis and Deep Learning using the Image.sc ecosystem</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_course_preparation/05_Module1.html">Course preparation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/10_Mambaforge_devbio.html">Mambaforge and devbio-napari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/15_Dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/18_Get_data.html">Get test data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/20_Test_deconvolution_libs.html">Test deconvolution imports</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/30_Test_deep_learning_libs.html">Test deep learning libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../10_Clesperanto_and_cupy/05_Clesperanto_cupy_intro.html">Clesperanto and Cupy</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/10_Clesperanto_select_devices.html">List and select devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/30_Clesperanto_apply_operations_on_data.html">Apply operations on data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/60_Cupy_basics.html">Basics of Cupy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/65_Cupy_dropin_replacement.html">Cupy as drop-in replacement for numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/70_Benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/80_Cupy_filtering.html">Image filtering using cupy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../20_Convolution_deconvolution/0_Intro_to_decon.html">Intro to Deconvolution and Restoration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/2_Cupy_forward.html">Implementing the forward model (Convolution) with cupy</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/4_Nuclei_Deconvolution_Segmentation.html">Nuclei Deconvolution and Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/10_Decon_systems_design.html">Deconvolution Systems Design</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../30_ML_pixel_classification/0_Intro_to_ml_pixel_classification.html">ML Pixel Classification</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../30_ML_pixel_classification/10_Napari_interactive_pixel_classification.html">DIY Interactive Segmentation with napari</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0_Intro_to_deep_learning.html">Intro to deep learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5_Pytorch_setup.html">Pytorch tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_Explore_data.html">Explore data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20_Make_labels.html">Label data</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Make Augmented Patches</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="35_Pytorch_semantic_segmentation.html">Train a semantic segmentation unet using Pytorch</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="40_Stardist_instance_segmentation.html">Check what devices we have access to….</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning/issues/new?title=Issue%20on%20page%20%2F40_Deep_learning/30_Make_augment_patches.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/40_Deep_learning/30_Make_augment_patches.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Make Augmented Patches</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Make Augmented Patches</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-image-and-previous-segmentations">Load the image and previous segmentations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#make-directories-to-save-patches">Make directories to save patches</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#create-random-patches">Create random patches</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="make-augmented-patches">
+<h1>Make Augmented Patches<a class="headerlink" href="#make-augmented-patches" title="Permalink to this heading">#</a></h1>
+<p>In this notebook we use an augmentation strategy to create the patches.  We randomly crop patches from the label images, then augment (flip, rotate, rescale) them.</p>
+<p>The augmentation could be done ‘lazily’ via a Pytorch ‘Dataset’ or as an option when training Stardist.  However in this case we explicitly save all the augmented patches so we can use them in multiple deep learning frameworks.</p>
+</section>
+<section id="load-the-image-and-previous-segmentations">
+<h1>Load the image and previous segmentations<a class="headerlink" href="#load-the-image-and-previous-segmentations" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imsave</span>
+<span class="kn">import</span> <span class="nn">napari</span>
+<span class="kn">from</span> <span class="nn">tnia.deeplearning.dl_helper</span> <span class="kn">import</span> <span class="n">make_patch_directory</span>
+<span class="kn">from</span> <span class="nn">tnia.deeplearning.dl_helper</span> <span class="kn">import</span> <span class="n">generate_patch_names</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">tnia.plotting.plt_helper</span> <span class="kn">import</span> <span class="n">imshow_multi2d</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">albumentations</span> <span class="k">as</span> <span class="nn">A</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1">#parent_path=Path(r&#39;../../data/roots&#39;)</span>
+<span class="c1">#ext = &#39;.jpg&#39;</span>
+
+<span class="n">parent_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;../../data/bees&#39;</span><span class="p">)</span>
+<span class="n">ext</span> <span class="o">=</span> <span class="s1">&#39;.tif&#39;</span>
+
+<span class="n">label_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">parent_path</span> <span class="o">/</span> <span class="sa">r</span><span class="s1">&#39;labels&#39;</span><span class="p">)</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">label_path</span> <span class="o">/</span> <span class="sa">r</span><span class="s1">&#39;images&#39;</span><span class="p">)</span>
+<span class="n">mask_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">label_path</span> <span class="o">/</span> <span class="sa">r</span><span class="s1">&#39;masks&#39;</span><span class="p">)</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">image_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="o">+</span><span class="n">ext</span><span class="p">))</span>
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">splitter</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">splitter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1">#im = imread(os.path.join(image_path / (name+ext))).mean(axis=2)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">image_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="n">ext</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1">#labels = np.zeros(im.shape, dtype=np.uint8)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mask_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;.tif&quot;</span><span class="p">)))</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">imshow_multi2d</span><span class="p">([</span><span class="n">im</span><span class="p">,</span> <span class="n">labels</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;im&#39;</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">colormaps</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;viridis&#39;</span><span class="p">],</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(512, 512)
+</pre></div>
+</div>
+<img alt="../_images/ef093eeaf34351745574a879a949e0920984201e0e7656c10e9a3ae8e1925181.png" src="../_images/ef093eeaf34351745574a879a949e0920984201e0e7656c10e9a3ae8e1925181.png" />
+</div>
+</div>
+</section>
+<section id="make-directories-to-save-patches">
+<h1>Make directories to save patches<a class="headerlink" href="#make-directories-to-save-patches" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patch_path</span><span class="o">=</span> <span class="n">parent_path</span> <span class="o">/</span> <span class="s1">&#39;patches&#39;</span> 
+<span class="n">image_patch_path</span> <span class="o">=</span>  <span class="n">patch_path</span> <span class="o">/</span> <span class="s1">&#39;input0&#39;</span>
+<span class="n">label_patch_path</span> <span class="o">=</span>  <span class="n">patch_path</span> <span class="o">/</span> <span class="s1">&#39;ground truth0&#39;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">patch_path</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">patch_path</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">image_patch_path</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">image_patch_path</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">label_patch_path</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">label_patch_path</span><span class="p">)</span>
+
+<span class="n">patch_base_name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="s1">&#39;YX&#39;</span>
+<span class="n">sub_sample</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">make_patch_directory</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">patch_path</span><span class="p">)</span>
+
+<span class="c1"># Load the existing JSON data which is created when making the patch directory and append addition information to it</span>
+<span class="n">json_file</span> <span class="o">=</span> <span class="n">patch_path</span> <span class="o">/</span> <span class="s2">&quot;info.json&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+
+<span class="c1"># add the sub_sample information to the JSON file</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;sub_sample&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_sample</span> 
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;axes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">axes</span>
+
+<span class="c1"># Write the modified data back to the JSON file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1.e-20</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="c1"># we have to add a small eps to handle the case where both quantiles are equal</span>
+    <span class="c1"># to avoid dividing by zero</span>
+    <span class="n">scaled</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">clip</span><span class="p">:</span>
+        <span class="n">scaled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">scaled</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">scaled</span>
+
+<span class="k">def</span> <span class="nf">quantile_normalization</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">quantile_low</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">quantile_high</span><span class="o">=</span><span class="mf">0.998</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1.e-20</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    First scales the data so that values below quantile_low are smaller</span>
+<span class="sd">    than 0 and values larger than quantile_high are larger than one.</span>
+<span class="sd">    Then optionally clips to (0, 1) range.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">qlow</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">quantile_low</span><span class="p">)</span>
+    <span class="n">qhigh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">quantile_high</span><span class="p">)</span>
+
+    <span class="n">scaled</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="n">qlow</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">qhigh</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="n">clip</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">scaled</span><span class="p">,</span> <span class="n">qlow</span><span class="p">,</span> <span class="n">qhigh</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-random-patches">
+<h1>Create random patches<a class="headerlink" href="#create-random-patches" title="Permalink to this heading">#</a></h1>
+<p>We randomly crop a p by p (where p is the patch size) section from the image then apply the augmentation function.  The augmentation function is composed of Flips, Rotations, and resizing.  We can also potentially apply intensity transforms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[WindowsPath(&#39;../../data/bees/labels/images/bees0.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees1.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees2.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees3.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees4.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees5.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees6.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees7.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees8.tif&#39;),
+ WindowsPath(&#39;../../data/bees/labels/images/bees9.tif&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">nbdime</span> <span class="kn">import</span> <span class="n">patch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+
+<span class="c1">#patch_size = 448</span>
+<span class="c1">#num_patches_per_file = 30</span>
+
+<span class="n">patch_size</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">num_patches_per_file</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+
+    <span class="n">patch_base_name</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">splitter</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">patch_base_name</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">patch_base_name</span> <span class="o">=</span> <span class="n">splitter</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ext</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">suffix</span>
+    <span class="c1">#print(str(file_name))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">patch_base_name</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span>
+
+    <span class="c1">#im = imread(image_path / (patch_base_name+ext)).astype(np.float32).mean(axis=2).astype(np.float32)</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">image_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">patch_base_name</span><span class="o">+</span><span class="n">ext</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">mask_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">patch_base_name</span><span class="o">+</span><span class="s1">&#39;.tif&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="c1">#.mean(axis=2).astype(np.float32)</span>
+    <span class="n">im</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quantile_normalization</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_patches_per_file</span><span class="p">):</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">im</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">patch_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">im</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">patch_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">s_</span><span class="p">[</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">patch_size</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">patch_size</span><span class="p">]</span>
+            
+        <span class="n">aug</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">VerticalFlip</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">HorizontalFlip</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>              
+            <span class="n">A</span><span class="o">.</span><span class="n">RandomRotate90</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+            <span class="c1">#A.RandomSizedCrop(min_max_height=(patch_size//2, patch_size), height=patch_size, width=patch_size, p=0.5),</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">RandomBrightnessContrast</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span>
+            <span class="c1">#A.RandomGamma(p=0.8),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">augmented</span> <span class="o">=</span> <span class="n">aug</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">im</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="n">labels</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+
+        <span class="n">im_aug</span> <span class="o">=</span> <span class="n">augmented</span><span class="p">[</span><span class="s1">&#39;image&#39;</span><span class="p">]</span>
+        <span class="n">label_aug</span> <span class="o">=</span> <span class="n">augmented</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">im_aug</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">label_aug</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">imshow_multi2d</span><span class="p">([</span><span class="n">im</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">im_aug</span><span class="p">,</span> <span class="n">label_aug</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="s1">&#39;input aug&#39;</span><span class="p">,</span> <span class="s1">&#39;label aug&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+        <span class="n">patch_base_name</span> <span class="o">=</span> <span class="s1">&#39;roots&#39;</span>
+
+        <span class="c1">#image_name, patch_name = generate_patch_names(str(image_patch_path), str(label_patch_path), patch_base_name)</span>
+        <span class="c1">#print(image_name, patch_name)</span>
+        <span class="c1">#imsave(image_name, im[ind])</span>
+        <span class="c1">#imsave(patch_name, labels[ind])</span>
+
+        <span class="n">image_name</span><span class="p">,</span> <span class="n">patch_name</span> <span class="o">=</span> <span class="n">generate_patch_names</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">image_patch_path</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">label_patch_path</span><span class="p">),</span> <span class="n">patch_base_name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">image_name</span><span class="p">,</span> <span class="n">patch_name</span><span class="p">)</span>
+        <span class="n">imsave</span><span class="p">(</span><span class="n">image_name</span><span class="p">,</span> <span class="n">im_aug</span><span class="p">)</span>
+        <span class="n">imsave</span><span class="p">(</span><span class="n">patch_name</span><span class="p">,</span> <span class="n">label_aug</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bees0 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_0.tif ..\..\data\bees\patches\ground truth0/roots_0.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_1.tif ..\..\data\bees\patches\ground truth0/roots_1.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_2.tif ..\..\data\bees\patches\ground truth0/roots_2.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_3.tif ..\..\data\bees\patches\ground truth0/roots_3.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_4.tif ..\..\data\bees\patches\ground truth0/roots_4.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_5.tif ..\..\data\bees\patches\ground truth0/roots_5.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_6.tif ..\..\data\bees\patches\ground truth0/roots_6.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_7.tif ..\..\data\bees\patches\ground truth0/roots_7.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_8.tif ..\..\data\bees\patches\ground truth0/roots_8.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_9.tif ..\..\data\bees\patches\ground truth0/roots_9.tif
+bees1 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_10.tif ..\..\data\bees\patches\ground truth0/roots_10.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_11.tif ..\..\data\bees\patches\ground truth0/roots_11.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_12.tif ..\..\data\bees\patches\ground truth0/roots_12.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_13.tif ..\..\data\bees\patches\ground truth0/roots_13.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_14.tif ..\..\data\bees\patches\ground truth0/roots_14.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_15.tif ..\..\data\bees\patches\ground truth0/roots_15.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_16.tif ..\..\data\bees\patches\ground truth0/roots_16.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_17.tif ..\..\data\bees\patches\ground truth0/roots_17.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_18.tif ..\..\data\bees\patches\ground truth0/roots_18.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_19.tif ..\..\data\bees\patches\ground truth0/roots_19.tif
+bees2 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_20.tif ..\..\data\bees\patches\ground truth0/roots_20.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_21.tif ..\..\data\bees\patches\ground truth0/roots_21.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_22.tif ..\..\data\bees\patches\ground truth0/roots_22.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_23.tif ..\..\data\bees\patches\ground truth0/roots_23.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_24.tif ..\..\data\bees\patches\ground truth0/roots_24.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_25.tif ..\..\data\bees\patches\ground truth0/roots_25.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_26.tif ..\..\data\bees\patches\ground truth0/roots_26.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_27.tif ..\..\data\bees\patches\ground truth0/roots_27.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_28.tif ..\..\data\bees\patches\ground truth0/roots_28.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_29.tif ..\..\data\bees\patches\ground truth0/roots_29.tif
+bees3 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_30.tif ..\..\data\bees\patches\ground truth0/roots_30.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_31.tif ..\..\data\bees\patches\ground truth0/roots_31.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_32.tif ..\..\data\bees\patches\ground truth0/roots_32.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_33.tif ..\..\data\bees\patches\ground truth0/roots_33.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_34.tif ..\..\data\bees\patches\ground truth0/roots_34.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_35.tif ..\..\data\bees\patches\ground truth0/roots_35.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_36.tif ..\..\data\bees\patches\ground truth0/roots_36.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_37.tif ..\..\data\bees\patches\ground truth0/roots_37.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_38.tif ..\..\data\bees\patches\ground truth0/roots_38.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_39.tif ..\..\data\bees\patches\ground truth0/roots_39.tif
+bees4 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_40.tif ..\..\data\bees\patches\ground truth0/roots_40.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_41.tif ..\..\data\bees\patches\ground truth0/roots_41.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_42.tif ..\..\data\bees\patches\ground truth0/roots_42.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_43.tif ..\..\data\bees\patches\ground truth0/roots_43.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_44.tif ..\..\data\bees\patches\ground truth0/roots_44.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_45.tif ..\..\data\bees\patches\ground truth0/roots_45.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_46.tif ..\..\data\bees\patches\ground truth0/roots_46.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_47.tif ..\..\data\bees\patches\ground truth0/roots_47.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_48.tif ..\..\data\bees\patches\ground truth0/roots_48.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_49.tif ..\..\data\bees\patches\ground truth0/roots_49.tif
+bees5 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_50.tif ..\..\data\bees\patches\ground truth0/roots_50.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_51.tif ..\..\data\bees\patches\ground truth0/roots_51.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_52.tif ..\..\data\bees\patches\ground truth0/roots_52.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_53.tif ..\..\data\bees\patches\ground truth0/roots_53.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_54.tif ..\..\data\bees\patches\ground truth0/roots_54.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_55.tif ..\..\data\bees\patches\ground truth0/roots_55.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_56.tif ..\..\data\bees\patches\ground truth0/roots_56.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_57.tif ..\..\data\bees\patches\ground truth0/roots_57.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_58.tif ..\..\data\bees\patches\ground truth0/roots_58.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_59.tif ..\..\data\bees\patches\ground truth0/roots_59.tif
+bees6 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_60.tif ..\..\data\bees\patches\ground truth0/roots_60.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_61.tif ..\..\data\bees\patches\ground truth0/roots_61.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_62.tif ..\..\data\bees\patches\ground truth0/roots_62.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_63.tif ..\..\data\bees\patches\ground truth0/roots_63.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_64.tif ..\..\data\bees\patches\ground truth0/roots_64.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_65.tif ..\..\data\bees\patches\ground truth0/roots_65.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_66.tif ..\..\data\bees\patches\ground truth0/roots_66.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_67.tif ..\..\data\bees\patches\ground truth0/roots_67.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_68.tif ..\..\data\bees\patches\ground truth0/roots_68.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_69.tif ..\..\data\bees\patches\ground truth0/roots_69.tif
+bees7 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_70.tif ..\..\data\bees\patches\ground truth0/roots_70.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_71.tif ..\..\data\bees\patches\ground truth0/roots_71.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_72.tif ..\..\data\bees\patches\ground truth0/roots_72.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_73.tif ..\..\data\bees\patches\ground truth0/roots_73.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_74.tif ..\..\data\bees\patches\ground truth0/roots_74.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_75.tif ..\..\data\bees\patches\ground truth0/roots_75.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_76.tif ..\..\data\bees\patches\ground truth0/roots_76.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_77.tif ..\..\data\bees\patches\ground truth0/roots_77.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_78.tif ..\..\data\bees\patches\ground truth0/roots_78.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_79.tif ..\..\data\bees\patches\ground truth0/roots_79.tif
+bees8 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_80.tif ..\..\data\bees\patches\ground truth0/roots_80.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_81.tif ..\..\data\bees\patches\ground truth0/roots_81.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_82.tif ..\..\data\bees\patches\ground truth0/roots_82.tif
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\bnort\AppData\Local\Temp\ipykernel_30964\1789157304.py:63: UserWarning: ..\..\data\bees\patches\ground truth0/roots_81.tif is a low contrast image
+  imsave(patch_name, label_aug)
+C:\Users\bnort\AppData\Local\Temp\ipykernel_30964\1789157304.py:63: UserWarning: ..\..\data\bees\patches\ground truth0/roots_82.tif is a low contrast image
+  imsave(patch_name, label_aug)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_83.tif ..\..\data\bees\patches\ground truth0/roots_83.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_84.tif ..\..\data\bees\patches\ground truth0/roots_84.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_85.tif ..\..\data\bees\patches\ground truth0/roots_85.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_86.tif ..\..\data\bees\patches\ground truth0/roots_86.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_87.tif ..\..\data\bees\patches\ground truth0/roots_87.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_88.tif ..\..\data\bees\patches\ground truth0/roots_88.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_89.tif ..\..\data\bees\patches\ground truth0/roots_89.tif
+bees9 .tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_90.tif ..\..\data\bees\patches\ground truth0/roots_90.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_91.tif ..\..\data\bees\patches\ground truth0/roots_91.tif
+(256, 256) (256, 256)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\bnort\AppData\Local\Temp\ipykernel_30964\1789157304.py:63: UserWarning: ..\..\data\bees\patches\ground truth0/roots_88.tif is a low contrast image
+  imsave(patch_name, label_aug)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>..\..\data\bees\patches\input0/roots_92.tif ..\..\data\bees\patches\ground truth0/roots_92.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_93.tif ..\..\data\bees\patches\ground truth0/roots_93.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_94.tif ..\..\data\bees\patches\ground truth0/roots_94.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_95.tif ..\..\data\bees\patches\ground truth0/roots_95.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_96.tif ..\..\data\bees\patches\ground truth0/roots_96.tif
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\bnort\AppData\Local\Temp\ipykernel_30964\1789157304.py:63: UserWarning: ..\..\data\bees\patches\ground truth0/roots_93.tif is a low contrast image
+  imsave(patch_name, label_aug)
+C:\Users\bnort\AppData\Local\Temp\ipykernel_30964\1789157304.py:63: UserWarning: ..\..\data\bees\patches\ground truth0/roots_95.tif is a low contrast image
+  imsave(patch_name, label_aug)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_97.tif ..\..\data\bees\patches\ground truth0/roots_97.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_98.tif ..\..\data\bees\patches\ground truth0/roots_98.tif
+(256, 256) (256, 256)
+..\..\data\bees\patches\input0/roots_99.tif ..\..\data\bees\patches\ground truth0/roots_99.tif
+</pre></div>
+</div>
+<img alt="../_images/affd58576e3264c1bf396ec7e0f0ff80222e973adcae9f17ab6504ee331362ec.png" src="../_images/affd58576e3264c1bf396ec7e0f0ff80222e973adcae9f17ab6504ee331362ec.png" />
+<img alt="../_images/65295a56631a46449dc9358be1e0339c8b537c1ba6d70f84d885859bbd32e611.png" src="../_images/65295a56631a46449dc9358be1e0339c8b537c1ba6d70f84d885859bbd32e611.png" />
+<img alt="../_images/dbdb12c8f30dd5a6e20e32969ec3e5eaf88ed6d1f1a2c5002f7c7b3833828472.png" src="../_images/dbdb12c8f30dd5a6e20e32969ec3e5eaf88ed6d1f1a2c5002f7c7b3833828472.png" />
+<img alt="../_images/578a09f71b3f0a7c54d15fccb976d7468ad3cf1c4a5e948b1802c6c1174327b8.png" src="../_images/578a09f71b3f0a7c54d15fccb976d7468ad3cf1c4a5e948b1802c6c1174327b8.png" />
+<img alt="../_images/66f2f920ad82b1919cf63893f3baadb6f9085310c9f588851247f25bf01bc0b0.png" src="../_images/66f2f920ad82b1919cf63893f3baadb6f9085310c9f588851247f25bf01bc0b0.png" />
+<img alt="../_images/77600013c3a9569a0ca3dc4813b3f0b177c3bf780f8a92c6c656c8ccc0c74c94.png" src="../_images/77600013c3a9569a0ca3dc4813b3f0b177c3bf780f8a92c6c656c8ccc0c74c94.png" />
+<img alt="../_images/867067e327711aa4baa8672f1604abd63f258d2aa3933a8654f2a0fd1f3552af.png" src="../_images/867067e327711aa4baa8672f1604abd63f258d2aa3933a8654f2a0fd1f3552af.png" />
+<img alt="../_images/5142342d1f804a5fe9c2426a47b210dd6280b0cae491a2cb458ea7bb463ba21d.png" src="../_images/5142342d1f804a5fe9c2426a47b210dd6280b0cae491a2cb458ea7bb463ba21d.png" />
+<img alt="../_images/4fa824f68b810b631234a74c39091c2ccd3c07235bcdd43a85bce08caee0d423.png" src="../_images/4fa824f68b810b631234a74c39091c2ccd3c07235bcdd43a85bce08caee0d423.png" />
+<img alt="../_images/e084b5f3534671526d14c41870276759391100012f8582024f2c03934816ba5a.png" src="../_images/e084b5f3534671526d14c41870276759391100012f8582024f2c03934816ba5a.png" />
+<img alt="../_images/134ef6ba138d923f1a4ab3a7f2f03fe613c59ca7567c5616f51923e68ca7d43c.png" src="../_images/134ef6ba138d923f1a4ab3a7f2f03fe613c59ca7567c5616f51923e68ca7d43c.png" />
+<img alt="../_images/48c69e1b1bc4436ee4f8b23f1af5bc6ef60238b5c2b855bb763e5894fa28c056.png" src="../_images/48c69e1b1bc4436ee4f8b23f1af5bc6ef60238b5c2b855bb763e5894fa28c056.png" />
+<img alt="../_images/9f8b73c6edb359c0400a5b6113587fc74b7c0ac69b071ca6e50e09cb88277249.png" src="../_images/9f8b73c6edb359c0400a5b6113587fc74b7c0ac69b071ca6e50e09cb88277249.png" />
+<img alt="../_images/e637b436722de5c73adfb29456b6259e81897d4d042802b38f109438f4cab98b.png" src="../_images/e637b436722de5c73adfb29456b6259e81897d4d042802b38f109438f4cab98b.png" />
+<img alt="../_images/b7ed6fd08ff269e132aee3748ae575066cd31dfd2f60f24eeee6d544a3575963.png" src="../_images/b7ed6fd08ff269e132aee3748ae575066cd31dfd2f60f24eeee6d544a3575963.png" />
+<img alt="../_images/7b5d18df0b9321540b66e19ff36f8b5f7604d34bfbfd2b2c2ebe0e70d52c5dc8.png" src="../_images/7b5d18df0b9321540b66e19ff36f8b5f7604d34bfbfd2b2c2ebe0e70d52c5dc8.png" />
+<img alt="../_images/706167d2e21f3cf21db49ba851fcbe1d48c3e7e7d140907d31dbdb8e361353ee.png" src="../_images/706167d2e21f3cf21db49ba851fcbe1d48c3e7e7d140907d31dbdb8e361353ee.png" />
+<img alt="../_images/2804892681d482db8c43b3f43333d7d2bd8564c1cb140903a20a9cb7b530e246.png" src="../_images/2804892681d482db8c43b3f43333d7d2bd8564c1cb140903a20a9cb7b530e246.png" />
+<img alt="../_images/695c4bd5e54822c53e20ecd2aac1de642e0104ffb3410aa976811ea5404b0599.png" src="../_images/695c4bd5e54822c53e20ecd2aac1de642e0104ffb3410aa976811ea5404b0599.png" />
+<img alt="../_images/22d2ebbbf1f2cb0e76d4a6e691d216ac05563575d321473782d556dff4fc71ad.png" src="../_images/22d2ebbbf1f2cb0e76d4a6e691d216ac05563575d321473782d556dff4fc71ad.png" />
+<img alt="../_images/4847af3d3db4f7281d5aa518d26c51c2202a2b2c4abd66b08b6780c894fcf5c1.png" src="../_images/4847af3d3db4f7281d5aa518d26c51c2202a2b2c4abd66b08b6780c894fcf5c1.png" />
+<img alt="../_images/c0c5f4ddce1bce14dc7792422f4e8b37e85c9d4b71078cf344e6fe4ddb89b98a.png" src="../_images/c0c5f4ddce1bce14dc7792422f4e8b37e85c9d4b71078cf344e6fe4ddb89b98a.png" />
+<img alt="../_images/5205afafe3e188d25049638616a5ffb14c7e9035963cced7a449da1d30257523.png" src="../_images/5205afafe3e188d25049638616a5ffb14c7e9035963cced7a449da1d30257523.png" />
+<img alt="../_images/39d037f53c2d5dd12016855192294531e36de95f2ee35da8cd3406d735f8f18c.png" src="../_images/39d037f53c2d5dd12016855192294531e36de95f2ee35da8cd3406d735f8f18c.png" />
+<img alt="../_images/d2e41f220febd16927f4f28dbc353bbbc017fc7063af8ba7d4bbd5ab1e952fc4.png" src="../_images/d2e41f220febd16927f4f28dbc353bbbc017fc7063af8ba7d4bbd5ab1e952fc4.png" />
+<img alt="../_images/bcdcf010005b3d93b8801dde0ff63006c375ff1d6f2c9bcc084d8ccc8f3a2569.png" src="../_images/bcdcf010005b3d93b8801dde0ff63006c375ff1d6f2c9bcc084d8ccc8f3a2569.png" />
+<img alt="../_images/2e725fc8a9e5eddc7c3ea3c8c6f9319618f6472626addba1e680fc72ebc26aaa.png" src="../_images/2e725fc8a9e5eddc7c3ea3c8c6f9319618f6472626addba1e680fc72ebc26aaa.png" />
+<img alt="../_images/028ce61e7fb6066aaf1ee3093d47189b792742d84793db85aed23b601e47856e.png" src="../_images/028ce61e7fb6066aaf1ee3093d47189b792742d84793db85aed23b601e47856e.png" />
+<img alt="../_images/dd66a83615172eb9e2670759fb2ff59e36673524511d3430405dc4f835fac3f2.png" src="../_images/dd66a83615172eb9e2670759fb2ff59e36673524511d3430405dc4f835fac3f2.png" />
+<img alt="../_images/0d4c2399d8e1f94114e72957f224e7fe16e3951d0c987d76a1084da8bc0fcc8e.png" src="../_images/0d4c2399d8e1f94114e72957f224e7fe16e3951d0c987d76a1084da8bc0fcc8e.png" />
+<img alt="../_images/ecdf809f68799f8198486fb1f622830edfa0e589ce6ca1d8a43c6ae5e6de4e02.png" src="../_images/ecdf809f68799f8198486fb1f622830edfa0e589ce6ca1d8a43c6ae5e6de4e02.png" />
+<img alt="../_images/3ae4bfbfe62ab9ef72a48c9ffc558c488483c7005d6594223ca580f7a0789ea5.png" src="../_images/3ae4bfbfe62ab9ef72a48c9ffc558c488483c7005d6594223ca580f7a0789ea5.png" />
+<img alt="../_images/aa85775115353ae24d7b2f20cfc77ad6a709c67595e0c6f332b134e0e51a8eb1.png" src="../_images/aa85775115353ae24d7b2f20cfc77ad6a709c67595e0c6f332b134e0e51a8eb1.png" />
+<img alt="../_images/f069c068f5cfb050f2f8b95455499c7926b5a304a2171168563e16c71bd47bcc.png" src="../_images/f069c068f5cfb050f2f8b95455499c7926b5a304a2171168563e16c71bd47bcc.png" />
+<img alt="../_images/ecaee99c3ce7431df8e1430308a0a61e6621f022b4e985a6e0b76707b7ecd5a1.png" src="../_images/ecaee99c3ce7431df8e1430308a0a61e6621f022b4e985a6e0b76707b7ecd5a1.png" />
+<img alt="../_images/560444e15dabe2677afb0b19cad087f87fe2f4f30f401181cdee3561449f3951.png" src="../_images/560444e15dabe2677afb0b19cad087f87fe2f4f30f401181cdee3561449f3951.png" />
+<img alt="../_images/870e5b18d99c3c5b4daa3edff17e5e40d2855bbd823828942a908c2ec3077233.png" src="../_images/870e5b18d99c3c5b4daa3edff17e5e40d2855bbd823828942a908c2ec3077233.png" />
+<img alt="../_images/afab4a56a72a7feefb843763705b0fbc7a6ae54467bfdae8cabe91f87069d760.png" src="../_images/afab4a56a72a7feefb843763705b0fbc7a6ae54467bfdae8cabe91f87069d760.png" />
+<img alt="../_images/96dc5488e164fc3e78266fbf5b639ad56f927743ed1435daceda692fad035cc0.png" src="../_images/96dc5488e164fc3e78266fbf5b639ad56f927743ed1435daceda692fad035cc0.png" />
+<img alt="../_images/780ccdc68a111c8caed42cadf7fac3b4457be49eeca9f07efe87a4b5f2ad78ba.png" src="../_images/780ccdc68a111c8caed42cadf7fac3b4457be49eeca9f07efe87a4b5f2ad78ba.png" />
+<img alt="../_images/e07f04654e9ef48f4690b9150393832e05f500aab66156dfc220171f7364334a.png" src="../_images/e07f04654e9ef48f4690b9150393832e05f500aab66156dfc220171f7364334a.png" />
+<img alt="../_images/cb651178c129067af1257e1aecde436816068247c70e4d9bfd22d78d81d1de87.png" src="../_images/cb651178c129067af1257e1aecde436816068247c70e4d9bfd22d78d81d1de87.png" />
+<img alt="../_images/23256e0ba930f04d65d78ff8fb702c775e5f33d0b576ca47268f2c98c30c8bff.png" src="../_images/23256e0ba930f04d65d78ff8fb702c775e5f33d0b576ca47268f2c98c30c8bff.png" />
+<img alt="../_images/6b4db721778132ea3e31c902e459f9731046bd76c6b303a523108c89da4612a0.png" src="../_images/6b4db721778132ea3e31c902e459f9731046bd76c6b303a523108c89da4612a0.png" />
+<img alt="../_images/3a51f22a08021f4d5d5e157bb1a2ddc5cb1ad4e3499893e72999b63c9533dc5e.png" src="../_images/3a51f22a08021f4d5d5e157bb1a2ddc5cb1ad4e3499893e72999b63c9533dc5e.png" />
+<img alt="../_images/cfe46eb28bbd6cd052662d8fb06007eb49efa542ed77f77dcf1eaf519d5b707d.png" src="../_images/cfe46eb28bbd6cd052662d8fb06007eb49efa542ed77f77dcf1eaf519d5b707d.png" />
+<img alt="../_images/497234ff9c3ac9a181062591817056d509d032d3a1eca570f6fbcdddf93b88e3.png" src="../_images/497234ff9c3ac9a181062591817056d509d032d3a1eca570f6fbcdddf93b88e3.png" />
+<img alt="../_images/1a870c51175a1dcfb5351d3c4985665e7eea2823b2db6ca1fc23401de8cea28e.png" src="../_images/1a870c51175a1dcfb5351d3c4985665e7eea2823b2db6ca1fc23401de8cea28e.png" />
+<img alt="../_images/97834fc2d313da86a02060aafdbeeb3cf304970309b5a36c85267667b7965f46.png" src="../_images/97834fc2d313da86a02060aafdbeeb3cf304970309b5a36c85267667b7965f46.png" />
+<img alt="../_images/ee6f83f7a386d9a8c2fefb450caba811aa5e2cef8e53a98e1cfcfa0f7254b21b.png" src="../_images/ee6f83f7a386d9a8c2fefb450caba811aa5e2cef8e53a98e1cfcfa0f7254b21b.png" />
+<img alt="../_images/b11037dfd56a872292a3e37d65a72c95720fc992c3760a23b6a8a3071a660a05.png" src="../_images/b11037dfd56a872292a3e37d65a72c95720fc992c3760a23b6a8a3071a660a05.png" />
+<img alt="../_images/8e65b3794602d2ebb3ab0f9a2dce2d5becbff1a372a25bb5e8526357fa78a92c.png" src="../_images/8e65b3794602d2ebb3ab0f9a2dce2d5becbff1a372a25bb5e8526357fa78a92c.png" />
+<img alt="../_images/da80c259a2b8bfb8f8f56c79703a4be36b78b6194cb169e047a9ed5a05fe43da.png" src="../_images/da80c259a2b8bfb8f8f56c79703a4be36b78b6194cb169e047a9ed5a05fe43da.png" />
+<img alt="../_images/7609b88d26104a45b22a05d866050a3df3ae0e07a91de6b46e68421be5490bd8.png" src="../_images/7609b88d26104a45b22a05d866050a3df3ae0e07a91de6b46e68421be5490bd8.png" />
+<img alt="../_images/a92255a1c53989dc550c95095869171e4fd9ec39fb89226349747c18652ff436.png" src="../_images/a92255a1c53989dc550c95095869171e4fd9ec39fb89226349747c18652ff436.png" />
+<img alt="../_images/8ac6791905d73ec76d4de8aa196354156534f7a6d1cc4256bc177e517dd76846.png" src="../_images/8ac6791905d73ec76d4de8aa196354156534f7a6d1cc4256bc177e517dd76846.png" />
+<img alt="../_images/f8329f0c40fa8351d8da042d59246b225096729d9043d698f538d8afd9855170.png" src="../_images/f8329f0c40fa8351d8da042d59246b225096729d9043d698f538d8afd9855170.png" />
+<img alt="../_images/79c32d8087b015f90d947975b842a8fd40278566070eb3dfdecdf6953ebbf8ee.png" src="../_images/79c32d8087b015f90d947975b842a8fd40278566070eb3dfdecdf6953ebbf8ee.png" />
+<img alt="../_images/00a842bc659a666f290d4fb8ab59f65eda5bc5faa10362aac1d29de8200d1761.png" src="../_images/00a842bc659a666f290d4fb8ab59f65eda5bc5faa10362aac1d29de8200d1761.png" />
+<img alt="../_images/6891e44f198c1c97ad59790db3c023dd41eebbb431f049ea73f3d5b353740473.png" src="../_images/6891e44f198c1c97ad59790db3c023dd41eebbb431f049ea73f3d5b353740473.png" />
+<img alt="../_images/28b6ac91b91abea9a564958a269319a777d95f4cf2a3c7db0b68137c138f648e.png" src="../_images/28b6ac91b91abea9a564958a269319a777d95f4cf2a3c7db0b68137c138f648e.png" />
+<img alt="../_images/2efbf92b98139a41aa157680cb518db889fefe5b639aabca84ed7e120cdd3a76.png" src="../_images/2efbf92b98139a41aa157680cb518db889fefe5b639aabca84ed7e120cdd3a76.png" />
+<img alt="../_images/4f4040a479eb54655ec8239b0e150f7c45e0cd942061baeef56fced55c5db771.png" src="../_images/4f4040a479eb54655ec8239b0e150f7c45e0cd942061baeef56fced55c5db771.png" />
+<img alt="../_images/317e8ba5b0f0893138997197d82d08715591e42c637de7c6788e6b2ede48ccbf.png" src="../_images/317e8ba5b0f0893138997197d82d08715591e42c637de7c6788e6b2ede48ccbf.png" />
+<img alt="../_images/bbfe4ceed30513cf2f01b5577e3e2cfc78014258fbb776225256009d00289dfd.png" src="../_images/bbfe4ceed30513cf2f01b5577e3e2cfc78014258fbb776225256009d00289dfd.png" />
+<img alt="../_images/5683f722af5423e7da21f68ee56b297aa42757b9061c83549ebda6de58f211e4.png" src="../_images/5683f722af5423e7da21f68ee56b297aa42757b9061c83549ebda6de58f211e4.png" />
+<img alt="../_images/ed069beb25595e84241759d50edea9d6e8e5f1c6bed93b80adea97152653b2d2.png" src="../_images/ed069beb25595e84241759d50edea9d6e8e5f1c6bed93b80adea97152653b2d2.png" />
+<img alt="../_images/a8a4ff113b9cbfa53ae38da54f938daef6de2981c0e48de241ba8f7b288e21bb.png" src="../_images/a8a4ff113b9cbfa53ae38da54f938daef6de2981c0e48de241ba8f7b288e21bb.png" />
+<img alt="../_images/6796ddc1aa7441c65b495c8cf2d14cebbdcadcc2a2cd48dd7fc90d8fdcccd0eb.png" src="../_images/6796ddc1aa7441c65b495c8cf2d14cebbdcadcc2a2cd48dd7fc90d8fdcccd0eb.png" />
+<img alt="../_images/658fab4b9c5f74afd827c19ab58df20479aa467a42a1a02040c9e1ff929d19f8.png" src="../_images/658fab4b9c5f74afd827c19ab58df20479aa467a42a1a02040c9e1ff929d19f8.png" />
+<img alt="../_images/2002b1448bdeee1d2b1cc03a90c05cd3d8cbec7054e4686d128a676aa701c477.png" src="../_images/2002b1448bdeee1d2b1cc03a90c05cd3d8cbec7054e4686d128a676aa701c477.png" />
+<img alt="../_images/4445596de066779933d15bff9b1fb14f039119c8d51f268ce096ca9f3f02a8c3.png" src="../_images/4445596de066779933d15bff9b1fb14f039119c8d51f268ce096ca9f3f02a8c3.png" />
+<img alt="../_images/7509e3b57e813c279df006a5dc5b1395da8d69ce676501a1fdc13bee5c33fa7e.png" src="../_images/7509e3b57e813c279df006a5dc5b1395da8d69ce676501a1fdc13bee5c33fa7e.png" />
+<img alt="../_images/3802638c2e8c8562141cb5fa0f01fa5902a2670e7b564d933fde27fc40480b11.png" src="../_images/3802638c2e8c8562141cb5fa0f01fa5902a2670e7b564d933fde27fc40480b11.png" />
+<img alt="../_images/d5f820074da059dc70d89db6561a4e3146cb0a5136ab60f62bca5b2cd674b492.png" src="../_images/d5f820074da059dc70d89db6561a4e3146cb0a5136ab60f62bca5b2cd674b492.png" />
+<img alt="../_images/c61593e7c6358969df13017964ed7bdb219cd4dd7d773c18c9d461d772bbc5d4.png" src="../_images/c61593e7c6358969df13017964ed7bdb219cd4dd7d773c18c9d461d772bbc5d4.png" />
+<img alt="../_images/627c963bc84e46aec2d66afd69f23538d0a702deb97c785a5cf605b9c1cd1444.png" src="../_images/627c963bc84e46aec2d66afd69f23538d0a702deb97c785a5cf605b9c1cd1444.png" />
+<img alt="../_images/54fb86e0441bfdc3fcf8809b66573f2ec08e8ae2dc5314c5f73c3f1ff84ef310.png" src="../_images/54fb86e0441bfdc3fcf8809b66573f2ec08e8ae2dc5314c5f73c3f1ff84ef310.png" />
+<img alt="../_images/8818f3f39de7f48dd891631f40d94647a2b851ed20f508c0d2345dc8990cdcdd.png" src="../_images/8818f3f39de7f48dd891631f40d94647a2b851ed20f508c0d2345dc8990cdcdd.png" />
+<img alt="../_images/6ab1236a4ce74c6ea486f5065af8e16255af977b2aeef18b5688c3d6189c9606.png" src="../_images/6ab1236a4ce74c6ea486f5065af8e16255af977b2aeef18b5688c3d6189c9606.png" />
+<img alt="../_images/69e745cc2962c1771c7f6a41de55aebeb015ca018dd58a5b0ae4f834b066e997.png" src="../_images/69e745cc2962c1771c7f6a41de55aebeb015ca018dd58a5b0ae4f834b066e997.png" />
+<img alt="../_images/ec0bea058e98a2999e41b653438d240050411911b7e9e255977b03f163b921eb.png" src="../_images/ec0bea058e98a2999e41b653438d240050411911b7e9e255977b03f163b921eb.png" />
+<img alt="../_images/aea990417d049d3d72832b30c1454d7fce1dc296ab4c1a9aa32b04cfc052ca44.png" src="../_images/aea990417d049d3d72832b30c1454d7fce1dc296ab4c1a9aa32b04cfc052ca44.png" />
+<img alt="../_images/d6262e3b27d0c14ce56fe75eede7168fcb72cac5951d840460dad7f893112585.png" src="../_images/d6262e3b27d0c14ce56fe75eede7168fcb72cac5951d840460dad7f893112585.png" />
+<img alt="../_images/98661d82f10c3c4c45626d29b578aed8d6589812b189e6e76bf6c951d61bbf39.png" src="../_images/98661d82f10c3c4c45626d29b578aed8d6589812b189e6e76bf6c951d61bbf39.png" />
+<img alt="../_images/29a141954d41cd6c7835a218a719664c6e3f17b6a66291ecd7267bc3278ad78c.png" src="../_images/29a141954d41cd6c7835a218a719664c6e3f17b6a66291ecd7267bc3278ad78c.png" />
+<img alt="../_images/13a69ea78f02b9d284278aedb78447b39f9672cae7a5771b244cfebd43051bff.png" src="../_images/13a69ea78f02b9d284278aedb78447b39f9672cae7a5771b244cfebd43051bff.png" />
+<img alt="../_images/9c1a63e4e0365bba3df9606906d82b87a45a30c3b7ae3a69d1f0d1d5e7988eaa.png" src="../_images/9c1a63e4e0365bba3df9606906d82b87a45a30c3b7ae3a69d1f0d1d5e7988eaa.png" />
+<img alt="../_images/da9beaa0a577f60f57e1f32d67f6f0c715bc07a345151fb4460759e3f3e7e166.png" src="../_images/da9beaa0a577f60f57e1f32d67f6f0c715bc07a345151fb4460759e3f3e7e166.png" />
+<img alt="../_images/cdf8be4f51b1fd84607e3ae8bc1a386cd929bb986372e1868e38d679a64d6d16.png" src="../_images/cdf8be4f51b1fd84607e3ae8bc1a386cd929bb986372e1868e38d679a64d6d16.png" />
+<img alt="../_images/5492b2b058ddea621157e64e5c947fe719cee6291d22fcb86a9173a452891e6f.png" src="../_images/5492b2b058ddea621157e64e5c947fe719cee6291d22fcb86a9173a452891e6f.png" />
+<img alt="../_images/1680c7765a52331ad12a3d960a44070d970ce6645d71645afd4fcf87c2401f4f.png" src="../_images/1680c7765a52331ad12a3d960a44070d970ce6645d71645afd4fcf87c2401f4f.png" />
+<img alt="../_images/160f9c834b5cf3f1daf8d37a0ba02bb83ca7a7aaa8a5b06947974c5e8cc2f19a.png" src="../_images/160f9c834b5cf3f1daf8d37a0ba02bb83ca7a7aaa8a5b06947974c5e8cc2f19a.png" />
+<img alt="../_images/a3d0cca4310424c79b64142985b5136a727d6173bed984cc19b123634d7af01a.png" src="../_images/a3d0cca4310424c79b64142985b5136a727d6173bed984cc19b123634d7af01a.png" />
+<img alt="../_images/d19c1a15ff105d36dab99dcb73951ac3ca05a49c80ccd6ba8cc64ca8cf366c52.png" src="../_images/d19c1a15ff105d36dab99dcb73951ac3ca05a49c80ccd6ba8cc64ca8cf366c52.png" />
+<img alt="../_images/444d286d507ccd862254f6a1b07d3dd6c8467cc45231a11ca393bc0018cf898e.png" src="../_images/444d286d507ccd862254f6a1b07d3dd6c8467cc45231a11ca393bc0018cf898e.png" />
+<img alt="../_images/980baa6a46cedc94726777885f1be21eed6bbfc76a5fe7b7e4f764af7de3bb25.png" src="../_images/980baa6a46cedc94726777885f1be21eed6bbfc76a5fe7b7e4f764af7de3bb25.png" />
+<img alt="../_images/e25e30415f6693d58ae943c6b8758e797803551538f6121b40bab82195c2ac15.png" src="../_images/e25e30415f6693d58ae943c6b8758e797803551538f6121b40bab82195c2ac15.png" />
+<img alt="../_images/6af2dd0a3c5776c59984a778753f4aace076f3d1bcfb6a82e5c1aac5af3e6836.png" src="../_images/6af2dd0a3c5776c59984a778753f4aace076f3d1bcfb6a82e5c1aac5af3e6836.png" />
+<img alt="../_images/cc10d2f82af8b26b478ac3ebf2b4218dcfa18fb55467e2165599659967a1cd18.png" src="../_images/cc10d2f82af8b26b478ac3ebf2b4218dcfa18fb55467e2165599659967a1cd18.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./40_Deep_learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="20_Make_labels.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Label data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="35_Pytorch_semantic_segmentation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Train a semantic segmentation unet using Pytorch</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Make Augmented Patches</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-image-and-previous-segmentations">Load the image and previous segmentations</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#make-directories-to-save-patches">Make directories to save patches</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#create-random-patches">Create random patches</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Copyright: This work can be reused under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a> license unless mentioned otherwise.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

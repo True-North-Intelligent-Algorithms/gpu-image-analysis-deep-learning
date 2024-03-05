@@ -1,0 +1,1748 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>DIY Interactive Segmentation with napari &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '30_ML_pixel_classification/10_Napari_interactive_pixel_classification';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Intro to deep learning" href="../40_Deep_learning/0_Intro_to_deep_learning.html" />
+    <link rel="prev" title="ML Pixel Classification" href="0_Intro_to_ml_pixel_classification.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">GPU image analysis and Deep Learning using the Image.sc ecosystem</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_course_preparation/05_Module1.html">Course preparation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/10_Mambaforge_devbio.html">Mambaforge and devbio-napari</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/15_Dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/18_Get_data.html">Get test data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/20_Test_deconvolution_libs.html">Test deconvolution imports</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../00_course_preparation/30_Test_deep_learning_libs.html">Test deep learning libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../10_Clesperanto_and_cupy/05_Clesperanto_cupy_intro.html">Clesperanto and Cupy</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/10_Clesperanto_select_devices.html">List and select devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/30_Clesperanto_apply_operations_on_data.html">Apply operations on data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/60_Cupy_basics.html">Basics of Cupy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/65_Cupy_dropin_replacement.html">Cupy as drop-in replacement for numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/70_Benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_Clesperanto_and_cupy/80_Cupy_filtering.html">Image filtering using cupy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../20_Convolution_deconvolution/0_Intro_to_decon.html">Intro to Deconvolution and Restoration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/2_Cupy_forward.html">Implementing the forward model (Convolution) with cupy</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/4_Nuclei_Deconvolution_Segmentation.html">Nuclei Deconvolution and Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../20_Convolution_deconvolution/10_Decon_systems_design.html">Deconvolution Systems Design</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0_Intro_to_ml_pixel_classification.html">ML Pixel Classification</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DIY Interactive Segmentation with napari</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../40_Deep_learning/0_Intro_to_deep_learning.html">Intro to deep learning</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/5_Pytorch_setup.html">Pytorch tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/10_Explore_data.html">Explore data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/20_Make_labels.html">Label data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/30_Make_augment_patches.html">Make Augmented Patches</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/35_Pytorch_semantic_segmentation.html">Train a semantic segmentation unet using Pytorch</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../40_Deep_learning/40_Stardist_instance_segmentation.html">Check what devices we have access to….</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning/issues/new?title=Issue%20on%20page%20%2F30_ML_pixel_classification/10_Napari_interactive_pixel_classification.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/30_ML_pixel_classification/10_Napari_interactive_pixel_classification.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DIY Interactive Segmentation with napari</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DIY Interactive Segmentation with napari</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-data">Open the data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-in-napari">Visualize in Napari</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-features">Extract Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-features">Visualize Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-interactive-segmentation-tool">Making the Interactive Segmentation Tool!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-our-painting-and-prediction-layers">Create our painting and prediction layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-make-a-ui-as-well">Let’s make a UI as well</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-have-a-widget-we-have-our-painting-and-prediction-layers-now-what">We have a widget, we have our painting and prediction layers, now what?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="diy-interactive-segmentation-with-napari">
+<h1>DIY Interactive Segmentation with napari<a class="headerlink" href="#diy-interactive-segmentation-with-napari" title="Permalink to this heading">#</a></h1>
+<p>napari is a very flexible and “hackable” tool. In this tutorial we will
+make a custom interactive segmentation tool from scratch.</p>
+<p>In this tutorial we will write an interactive segmentation tool</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">appdirs</span> <span class="kn">import</span> <span class="n">user_data_dir</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">zarr</span>
+<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+<span class="kn">import</span> <span class="nn">toolz</span> <span class="k">as</span> <span class="nn">tz</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">future</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">multiscale_basic_features</span>
+<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imshow</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">napari</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="kn">from</span> <span class="nn">ome_zarr.io</span> <span class="kn">import</span> <span class="n">parse_url</span>
+<span class="kn">from</span> <span class="nn">ome_zarr.reader</span> <span class="kn">import</span> <span class="n">Reader</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">psygnal</span> <span class="kn">import</span> <span class="n">debounced</span>
+<span class="kn">from</span> <span class="nn">superqt</span> <span class="kn">import</span> <span class="n">ensure_main_thread</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">LOGGER</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;halfway_to_i2k_2023_america&quot;</span><span class="p">)</span>
+<span class="n">LOGGER</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="n">streamHandler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span>
+    <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(name)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+<span class="n">streamHandler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">LOGGER</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">streamHandler</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="open-the-data">
+<h1>Open the data<a class="headerlink" href="#open-the-data" title="Permalink to this heading">#</a></h1>
+<p>For simplicity we will just use the first channel</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/16_06_21_10E5b_P6210591_000.jpg&quot;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/IXMtest_A02_s9.tif&quot;</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>  
+<span class="n">prediction_name</span> <span class="o">=</span> <span class="s2">&quot;prediction_nuclei&quot;</span>
+<span class="n">painting_name</span> <span class="o">=</span> <span class="s2">&quot;painting_nuclei&quot;</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/bees1.tif&quot;</span><span class="p">)</span>
+<span class="n">prediction_name</span> <span class="o">=</span> <span class="s2">&quot;prediction_bees&quot;</span>
+<span class="n">painting_name</span> <span class="o">=</span> <span class="s2">&quot;painting_bees&quot;</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/bees2.tif&quot;</span><span class="p">)</span>
+<span class="n">prediction_name</span> <span class="o">=</span> <span class="s2">&quot;prediction_bees2&quot;</span>
+<span class="n">painting_name</span> <span class="o">=</span> <span class="s2">&quot;painting_bees2&quot;</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/sem.tif&quot;</span><span class="p">)</span>
+<span class="n">prediction_name</span> <span class="o">=</span> <span class="s2">&quot;prediction_sem&quot;</span>
+<span class="n">painting_name</span> <span class="o">=</span> <span class="s2">&quot;painting_sem&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="visualize-in-napari">
+<h2>Visualize in Napari<a class="headerlink" href="#visualize-in-napari" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
+
+<span class="n">data_layer</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">data_layer</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-features">
+<h2>Extract Features<a class="headerlink" href="#extract-features" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_features</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">feature_params</span><span class="p">):</span>
+    <span class="n">features_func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
+        <span class="n">multiscale_basic_features</span><span class="p">,</span>
+        <span class="n">intensity</span><span class="o">=</span><span class="n">feature_params</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">],</span>
+        <span class="n">edges</span><span class="o">=</span><span class="n">feature_params</span><span class="p">[</span><span class="s2">&quot;edges&quot;</span><span class="p">],</span>
+        <span class="n">texture</span><span class="o">=</span><span class="n">feature_params</span><span class="p">[</span><span class="s2">&quot;texture&quot;</span><span class="p">],</span>
+        <span class="n">sigma_min</span><span class="o">=</span><span class="n">feature_params</span><span class="p">[</span><span class="s2">&quot;sigma_min&quot;</span><span class="p">],</span>
+        <span class="n">sigma_max</span><span class="o">=</span><span class="n">feature_params</span><span class="p">[</span><span class="s2">&quot;sigma_max&quot;</span><span class="p">],</span>
+        <span class="n">channel_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># print(f&quot;image shape {image.shape} feature params {feature_params}&quot;)</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">features_func</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">features</span>
+
+<span class="n">example_feature_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;sigma_min&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;sigma_max&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;edges&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;texture&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">features</span> <span class="o">=</span> <span class="n">extract_features</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">example_feature_params</span><span class="p">)</span>
+<span class="n">features</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1024, 1536, 12)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-features">
+<h2>Visualize Features<a class="headerlink" href="#visualize-features" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_features</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">feature_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">features</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">feature_idx</span><span class="p">])</span>
+        
+<span class="n">show_features</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="making-the-interactive-segmentation-tool">
+<h2>Making the Interactive Segmentation Tool!<a class="headerlink" href="#making-the-interactive-segmentation-tool" title="Permalink to this heading">#</a></h2>
+<p>Ok, now we’ve seen:</p>
+<ul class="simple">
+<li><p>our data</p></li>
+<li><p>some features we can compute for our data</p></li>
+</ul>
+<p>Our goal is to create an image where we have labels that correspond to the zebrafish sample.</p>
+<p>The approach is that when we annotate/draw in our painting layer, then we want our segmentations to be updated automatically.</p>
+<p>We will do this using 3 different image layers:</p>
+<ol class="arabic simple">
+<li><p>Our input image</p></li>
+<li><p>A layer for painting</p></li>
+<li><p>A layer for storing the machine learning generated predictions</p></li>
+</ol>
+<p>Due to popular demand we will be using Zarr to store these layers, because that will help this approach scale to very large datasets. However, we could have used numpy arrays as well.</p>
+</section>
+<section id="create-our-painting-and-prediction-layers">
+<h2>Create our painting and prediction layers<a class="headerlink" href="#create-our-painting-and-prediction-layers" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zarr_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;../../data/temp&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving outputs to zarr path: </span><span class="si">{</span><span class="n">zarr_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a prediction layer</span>
+<span class="n">prediction_data</span> <span class="o">=</span> <span class="n">zarr</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zarr_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">prediction_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span>
+    <span class="n">shape</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i4&#39;</span><span class="p">,</span>
+    <span class="n">dimension_separator</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+
+<span class="p">)</span>
+<span class="n">prediction_layer</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">prediction_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Prediction&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">data_layer</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
+
+<span class="c1"># Create a painting layer</span>
+<span class="n">painting_data</span> <span class="o">=</span> <span class="n">zarr</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zarr_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">painting_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span>
+    <span class="n">shape</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;i4&#39;</span><span class="p">,</span>
+    <span class="n">dimension_separator</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">painting_layer</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">painting_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Painting&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">data_layer</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving outputs to zarr path: ../../data/temp
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="let-s-make-a-ui-as-well">
+<h2>Let’s make a UI as well<a class="headerlink" href="#let-s-make-a-ui-as-well" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qtpy.QtWidgets</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">QVBoxLayout</span><span class="p">,</span>
+    <span class="n">QHBoxLayout</span><span class="p">,</span>
+    <span class="n">QComboBox</span><span class="p">,</span>
+    <span class="n">QLabel</span><span class="p">,</span>
+    <span class="n">QCheckBox</span><span class="p">,</span>
+    <span class="n">QDoubleSpinBox</span><span class="p">,</span>
+    <span class="n">QGroupBox</span><span class="p">,</span>
+    <span class="n">QWidget</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">NapariMLWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NapariMLWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">initUI</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">initUI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+
+        <span class="c1"># Dropdown for selecting the model</span>
+        <span class="n">model_label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Select Model&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_dropdown</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_dropdown</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span><span class="s2">&quot;Random Forest&quot;</span><span class="p">])</span>
+        <span class="n">model_layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">model_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">model_label</span><span class="p">)</span>
+        <span class="n">model_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dropdown</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">model_layout</span><span class="p">)</span>
+
+        <span class="c1"># Select the range of sigma sizes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma_start_spinbox</span> <span class="o">=</span> <span class="n">QDoubleSpinBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma_start_spinbox</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma_start_spinbox</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma_end_spinbox</span> <span class="o">=</span> <span class="n">QDoubleSpinBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma_end_spinbox</span><span class="o">.</span><span class="n">setRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma_end_spinbox</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+        <span class="n">sigma_layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">sigma_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Sigma Range: From&quot;</span><span class="p">))</span>
+        <span class="n">sigma_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_start_spinbox</span><span class="p">)</span>
+        <span class="n">sigma_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;To&quot;</span><span class="p">))</span>
+        <span class="n">sigma_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma_end_spinbox</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">sigma_layout</span><span class="p">)</span>
+
+        <span class="c1"># Boolean options for features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intensity_checkbox</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Intensity&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intensity_checkbox</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edges_checkbox</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Edges&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">texture_checkbox</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Texture&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">texture_checkbox</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">features_group</span> <span class="o">=</span> <span class="n">QGroupBox</span><span class="p">(</span><span class="s2">&quot;Features&quot;</span><span class="p">)</span>
+        <span class="n">features_layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="n">features_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intensity_checkbox</span><span class="p">)</span>
+        <span class="n">features_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges_checkbox</span><span class="p">)</span>
+        <span class="n">features_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">texture_checkbox</span><span class="p">)</span>
+        <span class="n">features_group</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">features_layout</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">features_group</span><span class="p">)</span>
+
+        <span class="c1"># Dropdown for data selection</span>
+        <span class="n">data_label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Select Data for Model Fitting&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_dropdown</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_dropdown</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;Current Displayed Region&quot;</span><span class="p">,</span> <span class="s2">&quot;Whole Image&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_dropdown</span><span class="o">.</span><span class="n">setCurrentText</span><span class="p">(</span><span class="s2">&quot;Current Displayed Region&quot;</span><span class="p">)</span>
+        <span class="n">data_layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">data_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">data_label</span><span class="p">)</span>
+        <span class="n">data_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_dropdown</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">data_layout</span><span class="p">)</span>
+
+        <span class="c1"># Checkbox for live model fitting</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">live_fit_checkbox</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Live Model Fitting&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">live_fit_checkbox</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_fit_checkbox</span><span class="p">)</span>
+
+        <span class="c1"># Checkbox for live prediction</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">live_pred_checkbox</span> <span class="o">=</span> <span class="n">QCheckBox</span><span class="p">(</span><span class="s2">&quot;Live Prediction&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">live_pred_checkbox</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_pred_checkbox</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s add this widget to napari</span>
+
+<span class="n">widget</span> <span class="o">=</span> <span class="n">NapariMLWidget</span><span class="p">()</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">add_dock_widget</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;halfway to I2K 2023 America&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;napari._qt.widgets.qt_viewer_dock_widget.QtViewerDockWidget at 0x22308f390d0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="we-have-a-widget-we-have-our-painting-and-prediction-layers-now-what">
+<h2>We have a widget, we have our painting and prediction layers, now what?<a class="headerlink" href="#we-have-a-widget-we-have-our-painting-and-prediction-layers-now-what" title="Permalink to this heading">#</a></h2>
+<p>We need to start connecting things together. How should we do that? napari has things called “events” that happen when things happen within napari. We want to respond to a few different event types:</p>
+<ul class="simple">
+<li><p>changes in camera (e.g. camera position and rotation)</p></li>
+<li><p>changes in “dims” (e.g. moving a dimension slider)</p></li>
+<li><p>painting events (e.g. a user clicked, painted, and release their mouse)</p></li>
+</ul>
+<p>When one of these events happens, we want to:</p>
+<ul class="simple">
+<li><p>update our machine learning model with the new painted data</p></li>
+<li><p>update our prediction with the updated ML model</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s start with our event listener</span>
+
+<span class="c1"># We use &quot;curry&quot; because this allows us to &quot;store&quot; our viewer and widget for later use</span>
+<span class="nd">@tz</span><span class="o">.</span><span class="n">curry</span>
+<span class="k">def</span> <span class="nf">on_data_change</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">widget</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">corner_pixels</span> <span class="o">=</span> <span class="n">data_layer</span><span class="o">.</span><span class="n">corner_pixels</span>
+
+    <span class="c1"># Ensure the painting layer visual is updated</span>
+    <span class="n">painting_layer</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+
+    <span class="c1"># Training the ML model and generating predictions can take time</span>
+    <span class="c1">#   we will use a &quot;thread&quot; to perform these calculations</span>
+    <span class="c1">#   otherwise napari will freeze until these</span>
+    <span class="c1"># calculations are done</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">threaded_on_data_change</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span>
+            <span class="n">event</span><span class="p">,</span>
+            <span class="n">corner_pixels</span><span class="p">,</span>
+            <span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span>
+            <span class="n">widget</span><span class="o">.</span><span class="n">model_dropdown</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;sigma_min&quot;</span><span class="p">:</span> <span class="n">widget</span><span class="o">.</span><span class="n">sigma_start_spinbox</span><span class="o">.</span><span class="n">value</span><span class="p">(),</span>
+                <span class="s2">&quot;sigma_max&quot;</span><span class="p">:</span> <span class="n">widget</span><span class="o">.</span><span class="n">sigma_end_spinbox</span><span class="o">.</span><span class="n">value</span><span class="p">(),</span>
+                <span class="s2">&quot;intensity&quot;</span><span class="p">:</span> <span class="n">widget</span><span class="o">.</span><span class="n">intensity_checkbox</span><span class="o">.</span><span class="n">isChecked</span><span class="p">(),</span>
+                <span class="s2">&quot;edges&quot;</span><span class="p">:</span> <span class="n">widget</span><span class="o">.</span><span class="n">edges_checkbox</span><span class="o">.</span><span class="n">isChecked</span><span class="p">(),</span>
+                <span class="s2">&quot;texture&quot;</span><span class="p">:</span> <span class="n">widget</span><span class="o">.</span><span class="n">texture_checkbox</span><span class="o">.</span><span class="n">isChecked</span><span class="p">(),</span>
+            <span class="p">},</span>
+            <span class="n">widget</span><span class="o">.</span><span class="n">live_fit_checkbox</span><span class="o">.</span><span class="n">isChecked</span><span class="p">(),</span>
+            <span class="n">widget</span><span class="o">.</span><span class="n">live_pred_checkbox</span><span class="o">.</span><span class="n">isChecked</span><span class="p">(),</span>
+            <span class="n">widget</span><span class="o">.</span><span class="n">data_dropdown</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="c1"># Ensure the prediction layer visual is updated</span>
+    <span class="n">prediction_layer</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we have to make the hard part of the listener</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">threaded_on_data_change</span><span class="p">(</span>
+    <span class="n">event</span><span class="p">,</span>
+    <span class="n">corner_pixels</span><span class="p">,</span>
+    <span class="n">dims</span><span class="p">,</span>
+    <span class="n">model_type</span><span class="p">,</span>
+    <span class="n">feature_params</span><span class="p">,</span>
+    <span class="n">live_fit</span><span class="p">,</span>
+    <span class="n">live_prediction</span><span class="p">,</span>
+    <span class="n">data_choice</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">global</span> <span class="n">model</span>
+    <span class="n">LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Labels data has changed! </span><span class="si">{</span><span class="n">event</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">current_step</span> <span class="o">=</span> <span class="n">dims</span><span class="o">.</span><span class="n">current_step</span>
+
+    <span class="n">LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;make mask&quot;</span><span class="p">)</span>
+    <span class="c1"># Find a mask of indices we will use for fetching our data</span>
+    <span class="n">mask_idx</span> <span class="o">=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">corner_pixels</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">corner_pixels</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="nb">slice</span><span class="p">(</span><span class="n">corner_pixels</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">corner_pixels</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+    <span class="c1">#if data_choice == &quot;Whole Image&quot;:</span>
+    <span class="c1">#    mask_idx = tuple([slice(0, sz) for sz in data_layer.data.shape])</span>
+
+    <span class="n">LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mask idx </span><span class="si">{</span><span class="n">mask_idx</span><span class="si">}</span><span class="s2">, image </span><span class="si">{</span><span class="n">data_layer</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">active_image</span> <span class="o">=</span> <span class="n">data_layer</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">mask_idx</span><span class="p">]</span>
+    <span class="n">LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;active image shape </span><span class="si">{</span><span class="n">active_image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> data choice </span><span class="si">{</span><span class="n">data_choice</span><span class="si">}</span><span class="s2"> painting_data </span><span class="si">{</span><span class="n">painting_data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> mask_idx </span><span class="si">{</span><span class="n">mask_idx</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">active_labels</span> <span class="o">=</span> <span class="n">painting_data</span><span class="p">[</span><span class="n">mask_idx</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">compute_features</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">feature_params</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute features for each channel and concatenate them.&quot;&quot;&quot;</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">extract_features</span><span class="p">(</span>
+            <span class="n">image</span><span class="p">,</span> <span class="n">feature_params</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">features</span>
+
+    <span class="n">training_labels</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">data_choice</span> <span class="o">==</span> <span class="s2">&quot;Current Displayed Region&quot;</span><span class="p">:</span>
+        <span class="c1"># Use only the currently displayed region.</span>
+        <span class="n">training_features</span> <span class="o">=</span> <span class="n">compute_features</span><span class="p">(</span>
+            <span class="n">active_image</span><span class="p">,</span> <span class="n">feature_params</span>
+        <span class="p">)</span>
+        <span class="n">training_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">active_labels</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid data choice: </span><span class="si">{</span><span class="n">data_choice</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">training_labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">training_labels</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No training data yet. Skipping model update&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">live_fit</span><span class="p">:</span>
+        <span class="c1"># Retrain model</span>
+        <span class="n">LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;training model with labels </span><span class="si">{</span><span class="n">training_labels</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> features </span><span class="si">{</span><span class="n">training_features</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> unique labels </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">training_labels</span><span class="p">[:])</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">update_model</span><span class="p">(</span><span class="n">training_labels</span><span class="p">,</span> <span class="n">training_features</span><span class="p">,</span> <span class="n">model_type</span><span class="p">)</span>
+
+    <span class="c1"># Don&#39;t do live prediction on whole image, that happens earlier slicewise</span>
+    <span class="k">if</span> <span class="n">live_prediction</span><span class="p">:</span>
+        <span class="c1"># Update prediction_data</span>
+        <span class="n">prediction_features</span> <span class="o">=</span> <span class="n">compute_features</span><span class="p">(</span>
+            <span class="n">active_image</span><span class="p">,</span> <span class="n">feature_params</span>
+        <span class="p">)</span>
+        <span class="c1"># Add 1 becasue of the background label adjustment for the model</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prediction_features</span><span class="p">,</span> <span class="n">model_type</span><span class="p">)</span>
+        <span class="n">LOGGER</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;prediction </span><span class="si">{</span><span class="n">prediction</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> prediction layer </span><span class="si">{</span><span class="n">prediction_layer</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> prediction </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> features </span><span class="si">{</span><span class="n">prediction_features</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1">#if data_choice == &quot;Whole Image&quot;:</span>
+        <span class="n">prediction_layer</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">mask_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+        <span class="c1">#else:</span>
+        <span class="c1">#    prediction_layer.data[mask_idx] = np.transpose(prediction)[</span>
+        <span class="c1">#        np.newaxis, :</span>
+        <span class="c1">#    ]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model training function that respects widget&#39;s model choice</span>
+<span class="k">def</span> <span class="nf">update_model</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model_type</span><span class="p">):</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="n">labels</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="c1"># We shift labels - 1 because background is 0 and has special meaning, but models need to start at 0</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">labels</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+    
+    <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">:</span>
+        <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+            <span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mf">0.05</span>
+        <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;updating model with label shape  </span><span class="si">{</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> feature shape </span><span class="si">{</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> unique labels </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+    
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">clf</span>
+
+
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model_type</span><span class="p">):</span>
+    <span class="c1"># We shift labels + 1 because background is 0 and has special meaning</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">predict_segmenter</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now connect everything together</span>
+<span class="k">for</span> <span class="n">listener</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="n">viewer</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">events</span><span class="p">,</span>
+    <span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">events</span><span class="p">,</span>
+    <span class="n">painting_layer</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">paint</span><span class="p">,</span>
+<span class="p">]:</span>
+    <span class="n">listener</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+        <span class="n">debounced</span><span class="p">(</span>
+            <span class="n">ensure_main_thread</span><span class="p">(</span>
+                <span class="n">on_data_change</span><span class="p">(</span>
+                    <span class="n">viewer</span><span class="o">=</span><span class="n">viewer</span><span class="p">,</span>
+                    <span class="n">widget</span><span class="o">=</span><span class="n">widget</span><span class="p">,</span>  <span class="c1"># pass the widget instance for easy access to settings</span>
+                <span class="p">)</span>
+            <span class="p">),</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:49:27,851 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:49:27,856 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:49:27,858 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:49:27,859 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:49:27,883 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-1659:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 61, in threaded_on_data_change
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\1753605063.py&quot;, line 16, in update_model
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\base.py&quot;, line 1151, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\ensemble\_forest.py&quot;, line 348, in fit
+    X, y = self._validate_data(
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\base.py&quot;, line 621, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\utils\validation.py&quot;, line 1147, in check_X_y
+    X = check_array(
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\utils\validation.py&quot;, line 969, in check_array
+    raise ValueError(
+ValueError: Found array with 0 sample(s) (shape=(0, 9)) while a minimum of 1 is required by RandomForestClassifier.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>updating model with label shape  (0,) feature shape (0, 9) unique labels []
+2024-03-05 14:49:36,353 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:49:36,357 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:49:36,358 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:49:36,359 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:49:36,386 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-1662:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 61, in threaded_on_data_change
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\1753605063.py&quot;, line 16, in update_model
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\base.py&quot;, line 1151, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\ensemble\_forest.py&quot;, line 348, in fit
+    X, y = self._validate_data(
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\base.py&quot;, line 621, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\utils\validation.py&quot;, line 1147, in check_X_y
+    X = check_array(
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\utils\validation.py&quot;, line 969, in check_array
+    raise ValueError(
+ValueError: Found array with 0 sample(s) (shape=(0, 9)) while a minimum of 1 is required by RandomForestClassifier.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>updating model with label shape  (0,) feature shape (0, 9) unique labels []
+2024-03-05 14:49:43,805 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:49:43,809 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:49:43,810 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:49:43,811 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:49:43,837 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1]
+updating model with label shape  (32,) feature shape (32, 9) unique labels [0]
+2024-03-05 14:49:44,055 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:49:57,093 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:49:57,099 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:49:57,101 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:49:57,102 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:49:57,129 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1 2]
+updating model with label shape  (2420,) feature shape (2420, 9) unique labels [0 1]
+2024-03-05 14:49:57,429 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:50:12,148 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:50:12,153 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:50:12,155 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:50:12,156 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:50:12,181 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1 2]
+updating model with label shape  (2494,) feature shape (2494, 9) unique labels [0 1]
+2024-03-05 14:50:12,445 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:50:19,807 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:50:19,812 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:50:19,814 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:50:19,815 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:50:19,842 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1 2]
+updating model with label shape  (2845,) feature shape (2845, 9) unique labels [0 1]
+2024-03-05 14:50:20,159 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:50:25,396 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:50:25,399 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:50:25,401 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:50:25,402 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:50:25,423 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1 2]
+updating model with label shape  (2879,) feature shape (2879, 9) unique labels [0 1]
+2024-03-05 14:50:25,685 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:50:29,769 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:50:29,773 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:50:29,775 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:50:29,776 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:50:29,801 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1 2]
+updating model with label shape  (2952,) feature shape (2952, 9) unique labels [0 1]
+2024-03-05 14:50:30,088 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:50:34,085 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:50:34,090 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:50:34,092 - halfway_to_i2k_2023_america - INFO - mask idx (slice(379, 609, None), slice(690, 937, None)), image (1024, 1536)
+2024-03-05 14:50:34,093 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(379, 609, None), slice(690, 937, None))
+2024-03-05 14:50:34,121 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1 2]
+updating model with label shape  (2984,) feature shape (2984, 9) unique labels [0 1]
+2024-03-05 14:50:34,379 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:51:03,434 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:51:03,438 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:51:03,440 - halfway_to_i2k_2023_america - INFO - mask idx (slice(169, 973, None), slice(369, 1233, None)), image (1024, 1536)
+2024-03-05 14:51:03,441 - halfway_to_i2k_2023_america - INFO - active image shape (804, 864) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(169, 973, None), slice(369, 1233, None))
+2024-03-05 14:51:03,610 - halfway_to_i2k_2023_america - INFO - training model with labels (804, 864) features (804, 864, 9) unique labels [0 1 2]
+updating model with label shape  (2984,) feature shape (2984, 9) unique labels [0 1]
+2024-03-05 14:51:04,227 - halfway_to_i2k_2023_america - INFO - prediction (864, 804) prediction layer (1024, 1536) prediction (804, 864) features (804, 864, 9)
+2024-03-05 14:51:23,242 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:51:23,247 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:51:23,248 - halfway_to_i2k_2023_america - INFO - mask idx (slice(169, 973, None), slice(369, 1233, None)), image (1024, 1536)
+2024-03-05 14:51:23,249 - halfway_to_i2k_2023_america - INFO - active image shape (804, 864) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(169, 973, None), slice(369, 1233, None))
+2024-03-05 14:51:23,416 - halfway_to_i2k_2023_america - INFO - training model with labels (804, 864) features (804, 864, 9) unique labels [0 1 2]
+updating model with label shape  (2984,) feature shape (2984, 9) unique labels [0 1]
+2024-03-05 14:51:24,017 - halfway_to_i2k_2023_america - INFO - prediction (864, 804) prediction layer (1024, 1536) prediction (804, 864) features (804, 864, 9)
+2024-03-05 14:51:38,117 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:51:38,121 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:51:38,123 - halfway_to_i2k_2023_america - INFO - mask idx (slice(169, 973, None), slice(369, 1233, None)), image (1024, 1536)
+2024-03-05 14:51:38,124 - halfway_to_i2k_2023_america - INFO - active image shape (804, 864) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(169, 973, None), slice(369, 1233, None))
+2024-03-05 14:51:38,301 - halfway_to_i2k_2023_america - INFO - training model with labels (804, 864) features (804, 864, 9) unique labels [0 1 2]
+updating model with label shape  (2984,) feature shape (2984, 9) unique labels [0 1]
+2024-03-05 14:51:38,890 - halfway_to_i2k_2023_america - INFO - prediction (864, 804) prediction layer (1024, 1536) prediction (804, 864) features (804, 864, 9)
+2024-03-05 14:52:05,771 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:52:05,777 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:52:05,778 - halfway_to_i2k_2023_america - INFO - mask idx (slice(169, 973, None), slice(369, 1233, None)), image (1024, 1536)
+2024-03-05 14:52:05,779 - halfway_to_i2k_2023_america - INFO - active image shape (804, 864) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(169, 973, None), slice(369, 1233, None))
+2024-03-05 14:52:05,945 - halfway_to_i2k_2023_america - INFO - training model with labels (804, 864) features (804, 864, 9) unique labels [0 1 2]
+updating model with label shape  (4658,) feature shape (4658, 9) unique labels [0 1]
+2024-03-05 14:52:06,556 - halfway_to_i2k_2023_america - INFO - prediction (864, 804) prediction layer (1024, 1536) prediction (804, 864) features (804, 864, 9)
+2024-03-05 14:52:15,541 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:52:15,547 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:52:15,549 - halfway_to_i2k_2023_america - INFO - mask idx (slice(169, 973, None), slice(369, 1233, None)), image (1024, 1536)
+2024-03-05 14:52:15,550 - halfway_to_i2k_2023_america - INFO - active image shape (804, 864) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(169, 973, None), slice(369, 1233, None))
+2024-03-05 14:52:15,717 - halfway_to_i2k_2023_america - INFO - training model with labels (804, 864) features (804, 864, 9) unique labels [0 1 2]
+updating model with label shape  (6660,) feature shape (6660, 9) unique labels [0 1]
+2024-03-05 14:52:16,360 - halfway_to_i2k_2023_america - INFO - prediction (864, 804) prediction layer (1024, 1536) prediction (804, 864) features (804, 864, 9)
+2024-03-05 14:52:27,682 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:52:27,688 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:52:27,690 - halfway_to_i2k_2023_america - INFO - mask idx (slice(169, 973, None), slice(369, 1233, None)), image (1024, 1536)
+2024-03-05 14:52:27,691 - halfway_to_i2k_2023_america - INFO - active image shape (804, 864) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(169, 973, None), slice(369, 1233, None))
+2024-03-05 14:52:27,868 - halfway_to_i2k_2023_america - INFO - training model with labels (804, 864) features (804, 864, 9) unique labels [0 1 2]
+updating model with label shape  (8119,) feature shape (8119, 9) unique labels [0 1]
+2024-03-05 14:52:28,514 - halfway_to_i2k_2023_america - INFO - prediction (864, 804) prediction layer (1024, 1536) prediction (804, 864) features (804, 864, 9)
+2024-03-05 14:52:34,706 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:52:34,711 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:52:34,713 - halfway_to_i2k_2023_america - INFO - mask idx (slice(543, 826, None), slice(438, 742, None)), image (1024, 1536)
+2024-03-05 14:52:34,714 - halfway_to_i2k_2023_america - INFO - active image shape (283, 304) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(543, 826, None), slice(438, 742, None))
+2024-03-05 14:52:34,744 - halfway_to_i2k_2023_america - INFO - training model with labels (283, 304) features (283, 304, 9) unique labels [0]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-2530:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 61, in threaded_on_data_change
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\1753605063.py&quot;, line 16, in update_model
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\base.py&quot;, line 1151, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\ensemble\_forest.py&quot;, line 348, in fit
+    X, y = self._validate_data(
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\base.py&quot;, line 621, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\utils\validation.py&quot;, line 1147, in check_X_y
+    X = check_array(
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\site-packages\sklearn\utils\validation.py&quot;, line 969, in check_array
+    raise ValueError(
+ValueError: Found array with 0 sample(s) (shape=(0, 9)) while a minimum of 1 is required by RandomForestClassifier.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>updating model with label shape  (0,) feature shape (0, 9) unique labels []
+2024-03-05 14:52:43,600 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:52:43,605 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:52:43,607 - halfway_to_i2k_2023_america - INFO - mask idx (slice(586, 816, None), slice(458, 705, None)), image (1024, 1536)
+2024-03-05 14:52:43,608 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(586, 816, None), slice(458, 705, None))
+2024-03-05 14:52:43,634 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1]
+updating model with label shape  (156,) feature shape (156, 9) unique labels [0]
+2024-03-05 14:52:43,913 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:52:43,982 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:52:43,985 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:52:43,986 - halfway_to_i2k_2023_america - INFO - mask idx (slice(586, 816, None), slice(458, 705, None)), image (1024, 1536)
+2024-03-05 14:52:43,987 - halfway_to_i2k_2023_america - INFO - active image shape (230, 247) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(586, 816, None), slice(458, 705, None))
+2024-03-05 14:52:44,008 - halfway_to_i2k_2023_america - INFO - training model with labels (230, 247) features (230, 247, 9) unique labels [0 1]
+updating model with label shape  (156,) feature shape (156, 9) unique labels [0]
+2024-03-05 14:52:44,236 - halfway_to_i2k_2023_america - INFO - prediction (247, 230) prediction layer (1024, 1536) prediction (230, 247) features (230, 247, 9)
+2024-03-05 14:52:56,635 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:52:56,640 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:52:56,641 - halfway_to_i2k_2023_america - INFO - mask idx (slice(380, 1024, None), slice(278, 979, None)), image (1024, 1536)
+2024-03-05 14:52:56,643 - halfway_to_i2k_2023_america - INFO - active image shape (644, 701) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(380, 1024, None), slice(278, 979, None))
+2024-03-05 14:52:56,763 - halfway_to_i2k_2023_america - INFO - training model with labels (644, 701) features (644, 701, 9) unique labels [0 1 2]
+updating model with label shape  (6601,) feature shape (6601, 9) unique labels [0 1]
+2024-03-05 14:52:57,272 - halfway_to_i2k_2023_america - INFO - prediction (701, 644) prediction layer (1024, 1536) prediction (644, 701) features (644, 701, 9)
+2024-03-05 14:53:00,501 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:53:00,506 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:53:00,507 - halfway_to_i2k_2023_america - INFO - mask idx (slice(216, 1024, None), slice(134, 1198, None)), image (1024, 1536)
+2024-03-05 14:53:00,509 - halfway_to_i2k_2023_america - INFO - active image shape (808, 1064) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(216, 1024, None), slice(134, 1198, None))
+2024-03-05 14:53:00,704 - halfway_to_i2k_2023_america - INFO - training model with labels (808, 1064) features (808, 1064, 9) unique labels [0 1 2]
+updating model with label shape  (8275,) feature shape (8275, 9) unique labels [0 1]
+2024-03-05 14:53:01,499 - halfway_to_i2k_2023_america - INFO - prediction (1064, 808) prediction layer (1024, 1536) prediction (808, 1064) features (808, 1064, 9)
+2024-03-05 14:53:08,566 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:53:08,570 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:53:08,572 - halfway_to_i2k_2023_america - INFO - mask idx (slice(451, 637, None), slice(651, 851, None)), image (1024, 1536)
+2024-03-05 14:53:08,573 - halfway_to_i2k_2023_america - INFO - active image shape (186, 200) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(451, 637, None), slice(651, 851, None))
+2024-03-05 14:53:08,595 - halfway_to_i2k_2023_america - INFO - training model with labels (186, 200) features (186, 200, 9) unique labels [0 1 2]
+updating model with label shape  (2630,) feature shape (2630, 9) unique labels [0 1]
+2024-03-05 14:53:08,868 - halfway_to_i2k_2023_america - INFO - prediction (200, 186) prediction layer (1024, 1536) prediction (186, 200) features (186, 200, 9)
+2024-03-05 14:53:15,576 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:53:15,581 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:53:15,583 - halfway_to_i2k_2023_america - INFO - mask idx (slice(451, 637, None), slice(651, 851, None)), image (1024, 1536)
+2024-03-05 14:53:15,584 - halfway_to_i2k_2023_america - INFO - active image shape (186, 200) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(451, 637, None), slice(651, 851, None))
+2024-03-05 14:53:15,611 - halfway_to_i2k_2023_america - INFO - training model with labels (186, 200) features (186, 200, 9) unique labels [0 1 2]
+updating model with label shape  (2771,) feature shape (2771, 9) unique labels [0 1]
+2024-03-05 14:53:15,936 - halfway_to_i2k_2023_america - INFO - prediction (200, 186) prediction layer (1024, 1536) prediction (186, 200) features (186, 200, 9)
+2024-03-05 14:53:19,547 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:53:19,552 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:53:19,553 - halfway_to_i2k_2023_america - INFO - mask idx (slice(210, 1015, None), slice(302, 1166, None)), image (1024, 1536)
+2024-03-05 14:53:19,554 - halfway_to_i2k_2023_america - INFO - active image shape (805, 864) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(210, 1015, None), slice(302, 1166, None))
+2024-03-05 14:53:19,736 - halfway_to_i2k_2023_america - INFO - training model with labels (805, 864) features (805, 864, 9) unique labels [0 1 2]
+updating model with label shape  (8416,) feature shape (8416, 9) unique labels [0 1]
+2024-03-05 14:53:20,387 - halfway_to_i2k_2023_america - INFO - prediction (864, 805) prediction layer (1024, 1536) prediction (805, 864) features (805, 864, 9)
+2024-03-05 14:53:22,580 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:53:22,584 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:53:22,585 - halfway_to_i2k_2023_america - INFO - mask idx (slice(375, 658, None), slice(700, 1004, None)), image (1024, 1536)
+2024-03-05 14:53:22,587 - halfway_to_i2k_2023_america - INFO - active image shape (283, 304) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(375, 658, None), slice(700, 1004, None))
+2024-03-05 14:53:22,612 - halfway_to_i2k_2023_america - INFO - training model with labels (283, 304) features (283, 304, 9) unique labels [0 1 2]
+updating model with label shape  (5127,) feature shape (5127, 9) unique labels [0 1]
+2024-03-05 14:53:22,887 - halfway_to_i2k_2023_america - INFO - prediction (304, 283) prediction layer (1024, 1536) prediction (283, 304) features (283, 304, 9)
+2024-03-05 14:53:27,990 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:53:27,996 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:53:27,998 - halfway_to_i2k_2023_america - INFO - mask idx (slice(327, 857, None), slice(486, 1054, None)), image (1024, 1536)
+2024-03-05 14:53:27,999 - halfway_to_i2k_2023_america - INFO - active image shape (530, 568) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(327, 857, None), slice(486, 1054, None))
+2024-03-05 14:53:28,087 - halfway_to_i2k_2023_america - INFO - training model with labels (530, 568) features (530, 568, 9) unique labels [0 1 2]
+updating model with label shape  (6742,) feature shape (6742, 9) unique labels [0 1]
+2024-03-05 14:53:28,501 - halfway_to_i2k_2023_america - INFO - prediction (568, 530) prediction layer (1024, 1536) prediction (530, 568) features (530, 568, 9)
+2024-03-05 14:53:30,456 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:53:30,461 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:53:30,463 - halfway_to_i2k_2023_america - INFO - mask idx (slice(238, 1024, None), slice(84, 1148, None)), image (1024, 1536)
+2024-03-05 14:53:30,464 - halfway_to_i2k_2023_america - INFO - active image shape (786, 1064) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(238, 1024, None), slice(84, 1148, None))
+2024-03-05 14:53:30,661 - halfway_to_i2k_2023_america - INFO - training model with labels (786, 1064) features (786, 1064, 9) unique labels [0 1 2]
+updating model with label shape  (8416,) feature shape (8416, 9) unique labels [0 1]
+2024-03-05 14:53:31,344 - halfway_to_i2k_2023_america - INFO - prediction (1064, 786) prediction layer (1024, 1536) prediction (786, 1064) features (786, 1064, 9)
+2024-03-05 14:54:36,661 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:54:36,667 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:54:36,668 - halfway_to_i2k_2023_america - INFO - mask idx (slice(605, 792, None), slice(636, 837, None)), image (1024, 1536)
+2024-03-05 14:54:36,669 - halfway_to_i2k_2023_america - INFO - active image shape (187, 201) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(605, 792, None), slice(636, 837, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3258:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:54:39,101 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:54:39,106 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:54:39,108 - halfway_to_i2k_2023_america - INFO - mask idx (slice(605, 792, None), slice(636, 837, None)), image (1024, 1536)
+2024-03-05 14:54:39,109 - halfway_to_i2k_2023_america - INFO - active image shape (187, 201) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(605, 792, None), slice(636, 837, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3261:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:54:44,319 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:54:44,324 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:54:44,326 - halfway_to_i2k_2023_america - INFO - mask idx (slice(605, 792, None), slice(636, 837, None)), image (1024, 1536)
+2024-03-05 14:54:44,327 - halfway_to_i2k_2023_america - INFO - active image shape (187, 201) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(605, 792, None), slice(636, 837, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3264:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:54:46,303 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:54:46,309 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:54:46,310 - halfway_to_i2k_2023_america - INFO - mask idx (slice(504, 934, None), slice(432, 893, None)), image (1024, 1536)
+2024-03-05 14:54:46,312 - halfway_to_i2k_2023_america - INFO - active image shape (430, 461) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(504, 934, None), slice(432, 893, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3274:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:54:47,706 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:54:47,711 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:54:47,713 - halfway_to_i2k_2023_america - INFO - mask idx (slice(463, 993, None), slice(348, 916, None)), image (1024, 1536)
+2024-03-05 14:54:47,714 - halfway_to_i2k_2023_america - INFO - active image shape (530, 568) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(463, 993, None), slice(348, 916, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3278:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:54:51,844 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:54:51,848 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:54:51,850 - halfway_to_i2k_2023_america - INFO - mask idx (slice(463, 993, None), slice(348, 916, None)), image (1024, 1536)
+2024-03-05 14:54:51,851 - halfway_to_i2k_2023_america - INFO - active image shape (530, 568) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(463, 993, None), slice(348, 916, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3281:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:01,887 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:01,892 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:01,894 - halfway_to_i2k_2023_america - INFO - mask idx (slice(696, 883, None), slice(386, 586, None)), image (1024, 1536)
+2024-03-05 14:55:01,894 - halfway_to_i2k_2023_america - INFO - active image shape (187, 200) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(696, 883, None), slice(386, 586, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3293:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:07,571 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:07,576 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:07,578 - halfway_to_i2k_2023_america - INFO - mask idx (slice(696, 883, None), slice(386, 586, None)), image (1024, 1536)
+2024-03-05 14:55:07,579 - halfway_to_i2k_2023_america - INFO - active image shape (187, 200) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(696, 883, None), slice(386, 586, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3296:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:10,105 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:10,110 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:10,112 - halfway_to_i2k_2023_america - INFO - mask idx (slice(496, 1024, None), slice(191, 760, None)), image (1024, 1536)
+2024-03-05 14:55:10,113 - halfway_to_i2k_2023_america - INFO - active image shape (528, 569) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(496, 1024, None), slice(191, 760, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3308:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:12,562 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:12,566 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:12,567 - halfway_to_i2k_2023_america - INFO - mask idx (slice(227, 1024, None), slice(0, 994, None)), image (1024, 1536)
+2024-03-05 14:55:12,568 - halfway_to_i2k_2023_america - INFO - active image shape (797, 994) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(227, 1024, None), slice(0, 994, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3316:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:13,735 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:13,740 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:13,742 - halfway_to_i2k_2023_america - INFO - mask idx (slice(336, 1024, None), slice(35, 899, None)), image (1024, 1536)
+2024-03-05 14:55:13,743 - halfway_to_i2k_2023_america - INFO - active image shape (688, 864) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(336, 1024, None), slice(35, 899, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3320:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:20,655 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:20,660 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:20,661 - halfway_to_i2k_2023_america - INFO - mask idx (slice(374, 657, None), slice(419, 723, None)), image (1024, 1536)
+2024-03-05 14:55:20,663 - halfway_to_i2k_2023_america - INFO - active image shape (283, 304) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(374, 657, None), slice(419, 723, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3332:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:29,969 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:29,975 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:29,976 - halfway_to_i2k_2023_america - INFO - mask idx (slice(301, 1024, None), slice(53, 917, None)), image (1024, 1536)
+2024-03-05 14:55:29,978 - halfway_to_i2k_2023_america - INFO - active image shape (723, 864) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(301, 1024, None), slice(53, 917, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3344:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:34,239 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:34,244 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:34,246 - halfway_to_i2k_2023_america - INFO - mask idx (slice(276, 1024, None), slice(0, 985, None)), image (1024, 1536)
+2024-03-05 14:55:34,247 - halfway_to_i2k_2023_america - INFO - active image shape (748, 985) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(276, 1024, None), slice(0, 985, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3348:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:43,424 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:43,429 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:43,431 - halfway_to_i2k_2023_america - INFO - mask idx (slice(230, 1024, None), slice(0, 1059, None)), image (1024, 1536)
+2024-03-05 14:55:43,432 - halfway_to_i2k_2023_america - INFO - active image shape (794, 1059) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(230, 1024, None), slice(0, 1059, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3373:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:48,785 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:48,789 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:48,790 - halfway_to_i2k_2023_america - INFO - mask idx (slice(0, 1024, None), slice(0, 1536, None)), image (1024, 1536)
+2024-03-05 14:55:48,791 - halfway_to_i2k_2023_america - INFO - active image shape (1024, 1536) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(0, 1024, None), slice(0, 1536, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3420:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:53,760 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:53,765 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:53,767 - halfway_to_i2k_2023_america - INFO - mask idx (slice(0, 1024, None), slice(0, 1536, None)), image (1024, 1536)
+2024-03-05 14:55:53,768 - halfway_to_i2k_2023_america - INFO - active image shape (1024, 1536) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(0, 1024, None), slice(0, 1536, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3446:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:55:55,329 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:55:55,335 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:55:55,336 - halfway_to_i2k_2023_america - INFO - mask idx (slice(0, 1024, None), slice(6, 1318, None)), image (1024, 1536)
+2024-03-05 14:55:55,338 - halfway_to_i2k_2023_america - INFO - active image shape (1024, 1312) data choice Whole Image painting_data (1024, 1536) mask_idx (slice(0, 1024, None), slice(6, 1318, None))
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception in thread Thread-3452:
+Traceback (most recent call last):
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 980, in _bootstrap_inner
+    self.run()
+  File &quot;c:\Users\bnort\miniconda3\envs\dresden-decon-test1\lib\threading.py&quot;, line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;C:\Users\bnort\AppData\Local\Temp\ipykernel_11572\2642771022.py&quot;, line 52, in threaded_on_data_change
+ValueError: Invalid data choice: Whole Image
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
+<p>Get the ML pixel classification result (prediction) from Napari and use the techniques from section one to try and count the number of bees and/or the total pixel count of the roots.  Try and improve the ML pixel classification for these images, and the downstream measurement results.  How good of a result can you get?  Are more advanced techniques needed?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print layers of viewer</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
+
+<span class="c1"># get prediction layer</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+
+<span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">dtype</span>
+
+<span class="n">result</span><span class="p">[</span><span class="n">result</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
+
+<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">label</span>
+
+<span class="n">labels2</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">labels2</span><span class="p">)</span>
+
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="c1">#viewer.add_labels(labels2)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;Image layer &#39;image&#39; at 0x2230808f400&gt;, &lt;Labels layer &#39;Prediction&#39; at 0x22300411910&gt;, &lt;Labels layer &#39;Painting&#39; at 0x223004fd8e0&gt;, &lt;Labels layer &#39;labels&#39; at 0x2230029b100&gt;]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Labels layer &#39;labels [1]&#39; at 0x22301094760&gt;
+</pre></div>
+</div>
+<img alt="../_images/6e725a7cc2d722ef7b63051c5e1666a3ab8351afb806d70291a91a774b61958c.png" src="../_images/6e725a7cc2d722ef7b63051c5e1666a3ab8351afb806d70291a91a774b61958c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-03-05 14:57:48,376 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:57:48,382 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:57:48,383 - halfway_to_i2k_2023_america - INFO - mask idx (slice(0, 1024, None), slice(0, 1536, None)), image (1024, 1536)
+2024-03-05 14:57:48,384 - halfway_to_i2k_2023_america - INFO - active image shape (1024, 1536) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(0, 1024, None), slice(0, 1536, None))
+2024-03-05 14:57:48,706 - halfway_to_i2k_2023_america - INFO - training model with labels (1024, 1536) features (1024, 1536, 9) unique labels [0 1 2]
+updating model with label shape  (8893,) feature shape (8893, 9) unique labels [0 1]
+2024-03-05 14:57:49,918 - halfway_to_i2k_2023_america - INFO - prediction (1536, 1024) prediction layer (1024, 1536) prediction (1024, 1536) features (1024, 1536, 9)
+2024-03-05 14:57:51,914 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:57:51,920 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:57:51,921 - halfway_to_i2k_2023_america - INFO - mask idx (slice(0, 1024, None), slice(0, 1468, None)), image (1024, 1536)
+2024-03-05 14:57:51,923 - halfway_to_i2k_2023_america - INFO - active image shape (1024, 1468) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(0, 1024, None), slice(0, 1468, None))
+2024-03-05 14:57:52,221 - halfway_to_i2k_2023_america - INFO - training model with labels (1024, 1468) features (1024, 1468, 9) unique labels [0 1 2]
+updating model with label shape  (8893,) feature shape (8893, 9) unique labels [0 1]
+2024-03-05 14:57:53,346 - halfway_to_i2k_2023_america - INFO - prediction (1468, 1024) prediction layer (1024, 1536) prediction (1024, 1468) features (1024, 1468, 9)
+2024-03-05 14:57:59,981 - halfway_to_i2k_2023_america - INFO - Labels data has changed! Event
+2024-03-05 14:57:59,986 - halfway_to_i2k_2023_america - INFO - make mask
+2024-03-05 14:57:59,987 - halfway_to_i2k_2023_america - INFO - mask idx (slice(0, 1024, None), slice(0, 1536, None)), image (1024, 1536)
+2024-03-05 14:57:59,989 - halfway_to_i2k_2023_america - INFO - active image shape (1024, 1536) data choice Current Displayed Region painting_data (1024, 1536) mask_idx (slice(0, 1024, None), slice(0, 1536, None))
+2024-03-05 14:58:00,332 - halfway_to_i2k_2023_america - INFO - training model with labels (1024, 1536) features (1024, 1536, 9) unique labels [0 1 2]
+updating model with label shape  (8893,) feature shape (8893, 9) unique labels [0 1]
+2024-03-05 14:58:01,491 - halfway_to_i2k_2023_america - INFO - prediction (1536, 1024) prediction layer (1024, 1536) prediction (1024, 1536) features (1024, 1536, 9)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test2</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test2</span><span class="p">)</span>
+<span class="n">test2</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(963, 1545, 4)
+</pre></div>
+</div>
+<img alt="../_images/ef1bb61a0252737bc4140eded2d147f5d30fdbd5834ae9d9f7bba1b3cbb7f3ae.png" src="../_images/ef1bb61a0252737bc4140eded2d147f5d30fdbd5834ae9d9f7bba1b3cbb7f3ae.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1"># convert to numpy array</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">[:]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test3</span> <span class="o">=</span> <span class="n">test2</span><span class="p">[</span><span class="mi">400</span><span class="p">:</span><span class="mi">780</span><span class="p">,</span> <span class="mi">600</span><span class="p">:</span><span class="mi">1000</span><span class="p">,:]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2230a1e4dc0&gt;
+</pre></div>
+</div>
+<img alt="../_images/6e1c1881af79f2a058f559a99d6c94fb8612ffcd574f0c8b29ae3db506492e95.png" src="../_images/6e1c1881af79f2a058f559a99d6c94fb8612ffcd574f0c8b29ae3db506492e95.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./30_ML_pixel_classification"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0_Intro_to_ml_pixel_classification.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ML Pixel Classification</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../40_Deep_learning/0_Intro_to_deep_learning.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Intro to deep learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DIY Interactive Segmentation with napari</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-data">Open the data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-in-napari">Visualize in Napari</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-features">Extract Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-features">Visualize Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-interactive-segmentation-tool">Making the Interactive Segmentation Tool!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-our-painting-and-prediction-layers">Create our painting and prediction layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-make-a-ui-as-well">Let’s make a UI as well</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-have-a-widget-we-have-our-painting-and-prediction-layers-now-what">We have a widget, we have our painting and prediction layers, now what?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Copyright: This work can be reused under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a> license unless mentioned otherwise.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

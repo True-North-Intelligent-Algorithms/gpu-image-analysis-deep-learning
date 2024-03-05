@@ -1,5 +1,5 @@
 
-# Module 1: Course preparation
+# Course preparation
 
 ## Setting up tools and dependencies
 
@@ -13,6 +13,7 @@ Perform the instructions in the following sections to prepare your machine for t
 * Clij2-fft for non-circulant Richardson Lucy Deconvolution with Total Variation Regularization
 * Tensorflow, Stardist and CSBDeep for deep learning segmentation and restoration 
 * Raster-Geometry to create simple simulated objects
+* PyTorch for designing Convolutional Neural Networks. 
 
 ## Getting the examples
 
@@ -21,10 +22,6 @@ The examples for this course are organized into a jupyter-book.  To get the most
 1.  Open the online book in a web browser and study the example notebooks.  The online version of the course can be found [here](https://true-north-intelligent-algorithms.github.io/gpu-image-analysis-deep-learning/intro.html).  The code examples are a rendering of code that has been run previously.  This view shows the expected outputs of the examples.  (We assume if you are reading this you have already found the online version of the course).
 
 2.  Also download the code to your personal device or a cloud VM and make sure you can run it successfully.  You can get the code on github at https://github.com/True-North-Intelligent-Algorithms/gpu-image-analysis-deep-learning.
-
-You can use the green 'code' button to either get the url of the code (to clone using git) or download the code as a .zip. 
-
-![github](fromgithub.jpg)
 
 To run the code locally browse into the folder where the code resides.  IE if the code is on your desktop
 
