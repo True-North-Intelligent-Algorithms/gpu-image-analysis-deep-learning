@@ -10,12 +10,6 @@ This is a short course exploring GPU image analysis and deep learning, using too
 
 Throughout the course we will use the Napari Viewer to explore, compare and annotate images.  We plan to use the same image set throughout each section and demonstrate, with real examples how analysis results evolve as we move from classical image processing, to pixel classification to deep learning. 
 
-## Outline
-
-* Module 1: Installing tools 
-* Module 2: Deconvolution
-* Module 3: Deep Learning
-
 ## License
 
 [![CC BY 4.0][cc-by-shield]][cc-by]

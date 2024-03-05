@@ -15,6 +15,34 @@ parts:
     - file: 00_course_preparation/10_Mambaforge_devbio
     - file: 00_course_preparation/15_Dependencies
     - file: 00_course_preparation/18_Get_data
-    - file: 00_course_preparation/20_Test_deconvolution_libs
-    - file: 00_course_preparation/30_Test_deep_learning_libs 
+    - file: 00_course_preparation/20_Test_deconvolution_libs.ipynb
+    - file: 00_course_preparation/30_Test_deep_learning_libs.ipynb
+  - file: 10_Clesperanto_and_cupy/05_Clesperanto_cupy_intro
+    sections:
+    - file: 10_Clesperanto_and_cupy/10_Clesperanto_select_devices.ipynb
+    - file: 10_Clesperanto_and_cupy/20_Clesperanto_gpu_arrays_and_memory_management.ipynb
+    - file: 10_Clesperanto_and_cupy/30_Clesperanto_apply_operations_on_data.ipynb
+    - file: 10_Clesperanto_and_cupy/40_Clesperanto_nuclei_segmentation.ipynb
+    - file: 10_Clesperanto_and_cupy/50_Clesperanto_measurement_and_quantification.ipynb
+    - file: 10_Clesperanto_and_cupy/60_Cupy_basics.ipynb
+    - file: 10_Clesperanto_and_cupy/65_Cupy_dropin_replacement.ipynb
+    - file: 10_Clesperanto_and_cupy/70_Benchmarking.ipynb
+    - file: 10_Clesperanto_and_cupy/80_Cupy_filtering.ipynb
+  - file: 20_Convolution_deconvolution/0_Intro_to_decon
+    sections:
+    - file: 20_Convolution_deconvolution/2_Cupy_forward.ipynb
+    - file: 20_Convolution_deconvolution/4_Nuclei_Deconvolution_Segmentation.ipynb
+    - file: 20_Convolution_deconvolution/10_Decon_systems_design.ipynb
+  - file: 30_ML_pixel_classification/0_Intro_to_ml_pixel_classification
+    sections:
+    - file: 30_ML_pixel_classification/10_Napari_interactive_pixel_classification.ipynb
+    - file: 30_ML_pixel_classification/10_Separate_and_label_result.ipynb
+  - file: 40_Deep_learning/0_Intro_to_deep_learning
+    sections:
+    - file: 40_Deep_learning/5_Pytorch_setup.ipynb
+    - file: 40_Deep_learning/10_Explore_data.ipynb
+    - file: 40_Deep_learning/20_Make_labels.ipynb
+    - file: 40_Deep_learning/30_Make_augment_patches.ipynb
+    - file: 40_Deep_learning/35_Pytorch_semantic_segmentation.ipynb
+    - file: 40_Deep_learning/40_Stardist_instance_segmentation.ipynb 
   
