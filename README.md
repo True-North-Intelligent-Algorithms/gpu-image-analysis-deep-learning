@@ -1,13 +1,9 @@
 # SciPy 2024 Tutorial Submissions: GPU image analysis and Deep Learning using the Image.sc ecosystem. 
 
-<img src="bees2.png" alt="Image" width="200">
-<img src="arrow.png" alt="Image" width="100">
-<img src="bees2_predicted.png" alt="Image" width="200">
+<img src="bees2.png" alt="Image" width="200"> <img src="arrow.png" alt="Image" width="100"> <img src="bees2_predicted.png" alt="Image" width="200">
 
 
-<img src="sphere_convolved_noise_xz.jpg" alt="Image" width="200">
-<img src="arrow.png" alt="Image" width="100">
-<img src="sphere_deconvolved_rltv0.002_a50_xz.jpg" alt="Image" width="200">
+<img src="sphere_convolved_noise_xz.jpg" alt="Image" width="200"> <img src="arrow.png" alt="Image" width="100"> <img src="sphere_deconvolved_rltv0.002_a50_xz.jpg" alt="Image" width="200">
 
 
 A short course exploring GPU image analysis and deep learning using tools, techniques and inspiration from Image.sc.  Image.sc is a discussion forum for scientific imaging with over 60 scientific partners, including CLIJ, Napari and Stardist.  In this tutorial we will use those toolkits, in addition to Cupy and Pytorch to tackle difficult image segmentation and restoration problems.  The course is a condensed and modified version of a 2.5 day [GPU image-analysis course](https://github.com/BiAPoL/PoL-BioImage-Analysis-TS-GPU-Accelerated-Image-Analysis/tree/main?tab=readme-ov-file) held at TU Dresden - Physics of Life in August 2023, and also uses material from the [Napari Halfway to I2K Tutorial](https://github.com/kephale/napari-workshop-halfway-to-i2k).   This course consists of 4 main sections.
